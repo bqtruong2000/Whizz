@@ -22,11 +22,11 @@
             android:layout_marginTop="490dp"
             android:layout_marginLeft="140dp"
             android:textSize="25dp"
-
+            android:textAlignment="center"
             />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/placeHolder"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -36,7 +36,6 @@
             android:layout_marginTop="550dp"
             android:layout_marginLeft="-200dp"
             android:textAlignment="center"
-
             />
 
     </LinearLayout>

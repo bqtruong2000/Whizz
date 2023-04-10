@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#38ABA4">
+    android:background="#38ABA4"
+    tools:context=".HomeActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        app:srcCompat="@drawable/home_island"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -15,7 +23,9 @@
         app:srcCompat="@drawable/rounded_corner" />
 
 
+
     <LinearLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,6 +36,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="5dp"
         android:orientation="horizontal">
+
+
 
         <ImageButton
             android:id="@+id/home"
@@ -72,10 +84,14 @@
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="396dp"
         android:background="@drawable/whiterectangle"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:text="Lập trình hướng đối tượng"
-        android:textSize="20dp" />
+        android:text="Object-Oriented Programming"
+        android:backgroundTint="#C9FEFB"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -87,10 +103,15 @@
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="226dp"
         android:background="@drawable/whiterectangle"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:text="Cơ sở dữ liệu"
-        android:textSize="20dp" />
+        android:gravity="center"
+        android:text="Database"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:backgroundTint="#C9FEFB"
+        />
 
     <TextView
         android:id="@+id/textView2"
@@ -102,9 +123,16 @@
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/whiterectangle"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:text="Hệ thống máy tính"
-        android:textSize="20dp" />
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Computer Systems"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:backgroundTint="#C9FEFB"
+        />
+
+
 
 </RelativeLayout>
