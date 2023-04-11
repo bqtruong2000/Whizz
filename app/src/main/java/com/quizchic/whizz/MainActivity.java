@@ -20,10 +20,13 @@ public class MainActivity extends AppCompatActivity {
         EditText placeHolder = findViewById(R.id.placeHolder);
         Button startButton = findViewById(R.id.startButton);
 
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                String s = placeHolder.getText().toString();
+                intent.putExtra("username",s);
                 startActivity(intent);
             }
         });
