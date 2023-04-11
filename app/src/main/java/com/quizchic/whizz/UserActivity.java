@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class UserActivity extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,28 @@ public class UserActivity extends AppCompatActivity {
         Intent i = getIntent();
         String name = i.getStringExtra("username");
 
-        TextView nameofuser = (TextView) findViewById(R.id.usersname);
-        nameofuser.setText(name);
+
+        TextView nameOfUser = (TextView) findViewById(R.id.usersname);
+        ImageButton homeButton = (ImageButton) findViewById(R.id.user_home);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toHomeActivity = new Intent(UserActivity.this, HomeActivity.class);
+                startActivity(toHomeActivity);
+            }
+        });
+
+        displayUserName(name,nameOfUser);
+    }
+
+    public void displayUserName(String name, TextView nameOfUser){
+        String nullName = "User's Name";
+        if(name.equalsIgnoreCase("") == false || name.equalsIgnoreCase("Your Name") == false){
+            nameOfUser.append(name);
+        }
+        else if(name.equalsIgnoreCase("") == true || name.equalsIgnoreCase("Your Name") == true) {
+            nameOfUser.append(nullName);
+        }
     }
 }
