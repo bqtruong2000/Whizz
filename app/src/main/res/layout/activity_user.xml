@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#38ABA4">
+    android:background="#38ABA4"
+    android:textAlignment="center">
+
+    <ImageView
+        android:id="@+id/island"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/home_island" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -69,8 +77,7 @@
             android:background="@drawable/backgroundcorner"
             android:src="@drawable/users"
             android:tint="@color/white"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,UseAppTint"
-            />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,UseAppTint" />
 
         <ImageButton
             android:id="@+id/settings"
@@ -81,14 +88,16 @@
             android:src="@drawable/settings"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/usersname"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_above="@+id/imageView2"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="149dp"
-        android:layout_marginBottom="430dp"
+        android:layout_marginBottom="428dp"
         android:text="User's Name"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -104,16 +113,16 @@
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="313dp"
         android:background="@drawable/smallgreenrectangle"
-        android:text="   Your Point             Your Supports"
-        android:textSize="16dp"
-        android:textStyle="bold"
         android:paddingLeft="20dp"
         android:paddingTop="40dp"
-        android:textColor="@color/white"/>
+        android:text="   Your Point             Your Supports"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="284dp"
@@ -181,11 +190,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="142dp"
-        android:text="Quiz 1"
-        android:textSize="20dp"
+        android:background="@drawable/smallwhiterectangle"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:background="@drawable/smallwhiterectangle" />
+        android:text="Quiz 1"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -195,10 +204,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="32dp"
-        android:text="Quiz 2"
-        android:textSize="20dp"
+        android:background="@drawable/smallwhiterectangle"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:background="@drawable/smallwhiterectangle" />
+        android:text="Quiz 2"
+        android:textSize="20dp" />
 
 </RelativeLayout>
