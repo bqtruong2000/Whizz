@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity"
+    android:background="#38ABA4">
+
+    <ImageButton
+        android:id="@+id/backArrow"
+        android:layout_width="66dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/backarrow"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/setting"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/backArrow"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="serif"
+        android:text="SETTINGS"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <ImageButton
+        android:id="@+id/userbackground"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:layout_below="@+id/setting"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/usercircle"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setting"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/userbackground"
+        android:fontFamily="serif"
+        android:text="User's name"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/cirle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userbackground"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/email" />
+
+    <ImageButton
+        android:id="@+id/cirle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/notification"
+        android:layout_below="@+id/cirle1"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="30dp"/>
+    <ImageButton
+        android:id="@+id/cirle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/privacy"
+        android:layout_below="@+id/cirle2"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="30dp"/>
+    <ImageButton
+        android:id="@+id/cirle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/baseline_security_24"
+        android:layout_below="@+id/cirle3"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="30dp"/>
+    <ImageButton
+        android:id="@+id/cirle5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/displaymode"
+        android:layout_below="@+id/line1"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="30dp"/>
+    <ImageButton
+        android:id="@+id/cirle6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/textsize"
+        android:layout_below="@+id/cirle5"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="30dp"/>
+
+    <ImageButton
+        android:id="@+id/cirle7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cirle6"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="14dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/contact" />
+
+    <ImageButton
+        android:id="@+id/cirle8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/baseline_language_24" />
+
+    <ImageButton
+        android:id="@+id/cirle9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cirle8"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/termofservice" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/cirle4"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/cirle7"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_corner"
+        android:layout_alignParentBottom="true"/>
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/home"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/achievement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:background="@null"
+            android:src="@drawable/search"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/personal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:background="@null"
+            android:src="@drawable/users"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/settingbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:background="@null"
+            android:src="@drawable/settings"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="11dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nofitication"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Nofitication"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/privacy"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nofitication"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="4dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Privacy"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/security"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/privacy"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="4dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Security"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/displaymode"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Display Mode"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textsize"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/displaymode"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Text Size"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/language"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textsize"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Language"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="-42dp"
+        android:layout_marginEnd="4dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Contact"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/language"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="7dp"
+        android:layout_toEndOf="@+id/cirle1"
+        android:fontFamily="serif"
+        android:text="Terms Of Service"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
