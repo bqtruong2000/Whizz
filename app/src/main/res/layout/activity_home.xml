@@ -106,7 +106,11 @@
         android:layout_marginBottom="226dp"
         android:background="@drawable/whiterectangle"
         android:gravity="center"
+<<<<<<< HEAD
+        android:text="Database Fundamental"
+=======
         android:text="Database"
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
@@ -136,5 +140,9 @@
         />
 
 
+<<<<<<< HEAD
 
 </RelativeLayout>
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
+

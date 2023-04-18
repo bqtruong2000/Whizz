@@ -3,6 +3,10 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+<<<<<<< HEAD
+import android.media.MediaPlayer;
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -20,6 +24,12 @@ public class HomeActivity extends AppCompatActivity {
 
         ImageButton user = (ImageButton) findViewById(R.id.user);
         TextView question = (TextView) findViewById(R.id.home_question1);
+<<<<<<< HEAD
+        MediaPlayer soundBackGround = MediaPlayer.create(this, R.raw.soundbackground);
+        soundBackGround.setLooping(true);
+        soundBackGround.start();
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
 
         user.setOnClickListener(new View.OnClickListener() {
             @Override

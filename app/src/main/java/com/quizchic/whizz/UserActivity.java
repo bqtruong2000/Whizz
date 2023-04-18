@@ -22,7 +22,11 @@ public class UserActivity extends AppCompatActivity {
 
 
         TextView nameOfUser = (TextView) findViewById(R.id.usersname);
+<<<<<<< HEAD
+        ImageButton homeButton = (ImageButton) findViewById(R.id.home);
+=======
         ImageButton homeButton = (ImageButton) findViewById(R.id.user_home);
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +35,10 @@ public class UserActivity extends AppCompatActivity {
                 startActivity(toHomeActivity);
             }
         });
+<<<<<<< HEAD
+
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
         displayUserName(name,nameOfUser);
     }
 
@@ -39,7 +47,11 @@ public class UserActivity extends AppCompatActivity {
         if(name.equalsIgnoreCase("") == false ){
             nameOfUser.append(name);
         }
+<<<<<<< HEAD
+        else if(name.equalsIgnoreCase("") == true ) {
+=======
         else if(name.equalsIgnoreCase("") == true) {
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
             nameOfUser.append(nullName);
         }
     }
