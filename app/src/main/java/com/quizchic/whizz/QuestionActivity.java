@@ -3,7 +3,10 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -24,10 +27,13 @@ public class QuestionActivity extends AppCompatActivity {
 
 
         displaceQuestion.append(listOfQuestion[randomQuestion(listOfQuestion.length)]);
+<<<<<<< HEAD
 
         MediaPlayer soundBackGround = MediaPlayer.create(this, R.raw.soundbackground);
         soundBackGround.setLooping(true);
         soundBackGround.start();
+=======
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
     }
 
     public int randomQuestion(int numberOfQuestions){

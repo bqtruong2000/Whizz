@@ -7,7 +7,11 @@
     tools:context=".QuestionActivity"
     android:background="@drawable/whizz_background">
 
+<<<<<<< HEAD
     <TextView
+=======
+        <TextView
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
         android:id="@+id/question_displayPlace"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -19,6 +23,7 @@
         android:backgroundTint="#C9FEFB"
         android:background="@drawable/whiterectangle" />
 
+<<<<<<< HEAD
     <Button
         android:id="@+id/question_answer1"
         android:layout_width="match_parent"
@@ -52,5 +57,44 @@
         android:textColor="#3AAAA4"
         android:backgroundTint="#0B323D"
         android:layout_below="@id/question_answer3"/>
+=======
+        <Button
+            android:id="@+id/question_answer1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Answer 1"
+            android:textColor="#3AAAA4"
+            android:backgroundTint="#0B323D"
+            android:layout_below="@id/question_displayPlace"
+            android:layout_marginTop="30dp"/>
+        <Button
+            android:id="@+id/question_answer2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Answer 2"
+            android:textColor="#3AAAA4"
+            android:backgroundTint="#0B323D"
+            android:layout_below="@id/question_answer1"/>
+        <Button
+            android:id="@+id/question_answer3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Answer 3"
+            android:textColor="#3AAAA4"
+            android:backgroundTint="#0B323D"
+            android:layout_below="@id/question_answer2"/>
+        <Button
+            android:id="@+id/question_answer4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Answer 4"
+            android:textColor="#3AAAA4"
+            android:backgroundTint="#0B323D"
+            android:layout_below="@id/question_answer3"/>
+
+
+
+
+>>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
 
 </RelativeLayout>
