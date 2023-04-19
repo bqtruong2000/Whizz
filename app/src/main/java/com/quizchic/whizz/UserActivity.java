@@ -37,10 +37,10 @@ public class UserActivity extends AppCompatActivity {
 
     public void displayUserName(String name, TextView nameOfUser){
         String nullName = "User's Name";
-        if(name.equalsIgnoreCase("") == false || name.equalsIgnoreCase("Your Name") == false){
+        if(name.equalsIgnoreCase("") == false ){
             nameOfUser.append(name);
         }
-        else if(name.equalsIgnoreCase("") == true || name.equalsIgnoreCase("Your Name") == true) {
+        else {
             nameOfUser.append(nullName);
         }
     }
