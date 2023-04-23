@@ -5,34 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuestionActivity"
-    android:background="@drawable/whizz_background">
+    android:background="@drawable/whizz_background"
+    android:id="@+id/question_container">
 
-<<<<<<< HEAD
+
     <TextView
-=======
-        <TextView
->>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
         android:id="@+id/question_displayPlace"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/whiterectangle"
         android:backgroundTint="#C9FEFB"
-        android:background="@drawable/whiterectangle" />
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/question_answer1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Answer 1"
-        android:textColor="#3AAAA4"
-        android:backgroundTint="#0B323D"
         android:layout_below="@id/question_displayPlace"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="41dp"
+        android:backgroundTint="#0B323D"
+        android:text="Answer 1"
+        android:textColor="#3AAAA4" />
+
     <Button
         android:id="@+id/question_answer2"
         android:layout_width="match_parent"
@@ -57,44 +55,36 @@
         android:textColor="#3AAAA4"
         android:backgroundTint="#0B323D"
         android:layout_below="@id/question_answer3"/>
-=======
-        <Button
-            android:id="@+id/question_answer1"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Answer 1"
-            android:textColor="#3AAAA4"
-            android:backgroundTint="#0B323D"
-            android:layout_below="@id/question_displayPlace"
-            android:layout_marginTop="30dp"/>
-        <Button
-            android:id="@+id/question_answer2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Answer 2"
-            android:textColor="#3AAAA4"
-            android:backgroundTint="#0B323D"
-            android:layout_below="@id/question_answer1"/>
-        <Button
-            android:id="@+id/question_answer3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Answer 3"
-            android:textColor="#3AAAA4"
-            android:backgroundTint="#0B323D"
-            android:layout_below="@id/question_answer2"/>
-        <Button
-            android:id="@+id/question_answer4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Answer 4"
-            android:textColor="#3AAAA4"
-            android:backgroundTint="#0B323D"
-            android:layout_below="@id/question_answer3"/>
 
+    <Button
+        android:id="@+id/question_submit"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/next" />
 
+    <Button
+        android:id="@+id/question_previous"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="87dp"
+        android:background="@drawable/back" />
 
-
->>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
-
+    <TextView
+        android:id="@+id/question_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="160dp"
+        android:text="Score: 0/0"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>

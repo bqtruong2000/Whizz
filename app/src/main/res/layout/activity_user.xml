@@ -53,11 +53,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-<<<<<<< HEAD
             android:id="@+id/home"
-=======
-            android:id="@+id/user_home"
->>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@null"
@@ -103,12 +99,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
-<<<<<<< HEAD
         android:textStyle="bold" />
-=======
-        android:textStyle="bold"
-        />
->>>>>>> f1cdcce4538356ae9f300e631251314749ea3b93
+
 
     <TextView
         android:id="@+id/pointandrank"
