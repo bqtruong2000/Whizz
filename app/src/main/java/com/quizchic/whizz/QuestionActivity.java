@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -25,11 +26,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     int totalQuestions = questions.size();
     TextView questionTextView,questionScore;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn;
-    Button submitBtn,previousBtn;
+    Button submitBtn,previousBtn,nextBtn;
     Button selectedBtn;
     String selectedAnswer, rightAnswer;
     int questionIndex = 0;
-    List<Integer> IdSaved = new ArrayList<Integer>();
+    List<Integer> idSaved = new ArrayList<Integer>();
     int id;
     //    Global variables
     public static int score = 0;
@@ -53,7 +54,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansC_Btn= findViewById(R.id.question_answer3);
         ansD_Btn= findViewById(R.id.question_answer4);
         submitBtn= findViewById(R.id.question_submit);
+        nextBtn = findViewById(R.id.question_next);
         previousBtn = findViewById(R.id.question_previous);
+        nextBtn.setVisibility(View.INVISIBLE);
+        previousBtn.setVisibility(View.INVISIBLE);
+        nextBtn.setEnabled(false);
+        previousBtn.setEnabled(false);
 
 
         ansA_Btn.setOnClickListener(this);
@@ -61,7 +67,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansC_Btn.setOnClickListener(this);
         ansD_Btn.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
-        previousBtn.setOnClickListener(this);
     }
 
     public void loadQuestions(int index){
@@ -77,7 +82,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        id = 0;
         Button clickedButton = (Button) view;
         ansA_Btn.setBackgroundColor(733757);
         ansB_Btn.setBackgroundColor(733757);
@@ -85,7 +89,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansD_Btn.setBackgroundColor(733757);
 
         if (clickedButton.getId() == R.id.question_submit){
-            IdSaved.add(id);
+            idSaved.add(id);
             if (selectedAnswer == rightAnswer){
                 score++;
                 questionScore.setText("Score:"+score+"/"+totalQuestions );
@@ -96,12 +100,23 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             } else {
                 loadQuestions(questionIndex);
             }
-        } else if(clickedButton.getId() == R.id.question_previous){
-            new AlertDialog.Builder(this)
-                    .setMessage("Can't back until finishing")
-                    .setPositiveButton("Continue", ((dialogInterface, i) -> loadQuestions(questionIndex)))
-                    .show();
-        } else {
+        } else if(clickedButton.getId() == R.id.question_next){
+            if(questionIndex < totalQuestions-1){
+                questionIndex++;
+                loadQuestions(questionIndex);
+                loadCheck(questionIndex);
+            }else{
+                warningReviewLimit();
+            }
+        } else if (clickedButton.getId() == R.id.question_previous) {
+            if(questionIndex>0){
+                questionIndex --;
+                loadQuestions(questionIndex);
+                loadCheck(questionIndex);
+            }else{
+                warningReviewLimit();
+            }
+        } else{
             id = clickedButton.getId();
             clickedButton.setBackgroundColor(Color.WHITE);
             selectedAnswer = clickedButton.getText().toString().trim();
@@ -119,17 +134,64 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     public void warningReviewLimit(){
         new AlertDialog.Builder(this)
                 .setMessage("can't go anymore")
+                .setPositiveButton("Restar", ((dialogInterface, i) -> restartQuiz()))
+                .setNegativeButton("continue", ((dialogInterface, i) -> reviewQuiz()))
                 .show();
+    }
+
+    public void loadCheck(int questionIndex){
+        if(idSaved.get(questionIndex)!= null){
+            selectedBtn = findViewById(idSaved.get(questionIndex));
+            if(selectedBtn.getText() == rightAnswer){
+                selectedBtn.setBackgroundColor(Color.GREEN);
+            } else {
+                selectedBtn.setBackgroundColor(Color.RED);
+                checkRightAnswer();
+            }
+        }else{
+            checkRightAnswer();
+        }
+    }
+    public void checkRightAnswer(){
+            if (ansA_Btn.getText() == rightAnswer)
+                ansA_Btn.setBackgroundColor(Color.GREEN);
+            if (ansB_Btn.getText() == rightAnswer)
+                ansB_Btn.setBackgroundColor(Color.GREEN);
+            if (ansC_Btn.getText() == rightAnswer)
+                ansC_Btn.setBackgroundColor(Color.GREEN);
+            if (ansD_Btn.getText() == rightAnswer)
+                ansD_Btn.setBackgroundColor(Color.GREEN);
     }
 
     public void restartQuiz(){
         score = 0;
         questionIndex = 0;
+        nextBtn.setVisibility(View.INVISIBLE);
+        previousBtn.setVisibility(View.INVISIBLE);
+        nextBtn.setEnabled(false);
+        previousBtn.setEnabled(false);
+        submitBtn.setVisibility(View.VISIBLE);
+        submitBtn.setEnabled(true);
+        ansA_Btn.setEnabled(true);
+        ansB_Btn.setEnabled(true);
+        ansC_Btn.setEnabled(true);
+        ansD_Btn.setEnabled(true);
         loadQuestions(questionIndex);
     }
 
     public void reviewQuiz() {
-        // Next and previous buton
+//        loadQuestions(questionIndex);
+        nextBtn.setVisibility(View.VISIBLE);
+        previousBtn.setVisibility(View.VISIBLE);
+        nextBtn.setEnabled(true);
+        previousBtn.setEnabled(true);
+        submitBtn.setVisibility(View.INVISIBLE);
+        submitBtn.setEnabled(false);
+        ansA_Btn.setEnabled(false);
+        ansB_Btn.setEnabled(false);
+        ansC_Btn.setEnabled(false);
+        ansD_Btn.setEnabled(false);
+//        loadCheck(questionIndex);
     }
 //    Yes/No questions
 //    shuffle questions
