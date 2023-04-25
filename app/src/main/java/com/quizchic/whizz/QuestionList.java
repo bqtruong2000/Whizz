@@ -12,7 +12,7 @@ import java.util.ListIterator;
 public class QuestionList extends ArrayList<Question> {
     public QuestionList() {
         Question q1 = new Question();
-        q1.setQuestion("What is Software?");
+        q1.setQuestion("1. What is Software?");
         q1.setAnswer("Software is a set of programs and documentation");
         q1.setOption1("Software is documentation and configuration of data");
         q1.setOption2("Software is a set of programs");
@@ -20,7 +20,7 @@ public class QuestionList extends ArrayList<Question> {
         this.add(q1);
 
         Question q2 = new Question();
-        q2.setQuestion("Project risk factor is considered in which model?");
+        q2.setQuestion("2. Project risk factor is considered in which model?");
         q2.setAnswer("Spiral model");
         q2.setOption1("Waterfall model");
         q2.setOption2("RM model");
@@ -28,7 +28,7 @@ public class QuestionList extends ArrayList<Question> {
         this.add(q2);
 
         Question q3 = new Question();
-        q3.setQuestion("Which of the following is true?");
+        q3.setQuestion("3. Which of the following is true?");
         q3.setAnswer("Design – Solving problems");
         q3.setOption1("Analysis – Find out solutions");
         q3.setOption2("Analysis – How to do it");

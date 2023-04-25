@@ -56,6 +56,26 @@
         android:backgroundTint="#0B323D"
         android:layout_below="@id/question_answer3"/>
 
+    <Button
+        android:id="@+id/question_next"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/next" />
+
+    <Button
+        android:id="@+id/question_previous"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="87dp"
+        android:background="@drawable/back" />
+
     <TextView
         android:id="@+id/question_score"
         android:layout_width="wrap_content"
@@ -67,15 +87,4 @@
         android:text="Score: 0/0"
         android:textSize="20dp"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/question_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/question_answer4"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-2dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="#0B323D"
-        android:text="Submit" />
 </RelativeLayout>
