@@ -1,0 +1,23 @@
+[
+  {
+    "question": "1. What is Software?",
+    "answer": "Software is a set of programs and documentation",
+    "option1": "Software is documentation and configuration of data",
+    "option2": "Software is a set of programs",
+    "option3": "None of these"
+  },
+  {
+    "question": "2. Project risk factor is considered in which model?",
+    "answer": "Spiral model",
+    "option1": "Waterfall model",
+    "option2": "RM model",
+    "option3": "Prototyping model"
+  },
+  {
+    "question": "3. Which of the following is true?",
+    "answer": "Design – Solving problems",
+    "option1": "Analysis – How to do it",
+    "option2": "Analysis – Find out solutions",
+    "option3": "Design – Understanding problems"
+  }
+]
