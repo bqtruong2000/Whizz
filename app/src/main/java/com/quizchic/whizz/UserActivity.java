@@ -23,7 +23,7 @@ public class UserActivity extends AppCompatActivity {
 
 
         TextView nameOfUser = (TextView) findViewById(R.id.usersname);
-        Button homeButton = (Button) findViewById(R.id.home);
+        ImageButton homeButton = (ImageButton) findViewById(R.id.home);
 
 
 

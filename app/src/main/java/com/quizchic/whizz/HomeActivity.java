@@ -22,8 +22,8 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = getIntent();
         String name = i.getStringExtra("username");
 
-        Button user = (Button) findViewById(R.id.user);
-        TextView question = (TextView) findViewById(R.id.home_question1);
+        ImageButton user = (ImageButton) findViewById(R.id.user);
+        Button question = (Button) findViewById(R.id.home_question1);
         MediaPlayer soundBackGround = MediaPlayer.create(this, R.raw.soundbackground);
         soundBackGround.setLooping(true);
         soundBackGround.start();
