@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class UserActivity extends AppCompatActivity {
 
 
         TextView nameOfUser = (TextView) findViewById(R.id.usersname);
-        ImageButton homeButton = (ImageButton) findViewById(R.id.home);
+        Button homeButton = (Button) findViewById(R.id.home);
 
 
 
