@@ -3,6 +3,7 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,7 +22,8 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
-    int score = 0;
+    int score = 0,scoreOfAnAnswer = 50;
+    int correctAnswers = 0, incorrectAnswers = 0;
     private int totalQuestions;
 
     TextView questionTextView,questionScore;
@@ -96,7 +98,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void loadQuestions(int index){
-        questionScore.setText("Score:"+score+"/"+totalQuestions );
+        questionScore.setText("Score:"+score );
         Question question = (Question) questions.get(index);
         rightAnswer = question.getAnswer();
         questionTextView.setText(question.getQuestion());
@@ -106,6 +108,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansD_Btn.setText(question.getOption3());
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public void onClick(View view) {
         Button clickedButton = (Button) view;
@@ -113,16 +116,26 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansB_Btn.setBackgroundColor(733757);
         ansC_Btn.setBackgroundColor(733757);
         ansD_Btn.setBackgroundColor(733757);
-
         if (clickedButton.getId() == R.id.question_submit){
             selectedAns.add(ans);
             if (selectedAnswer == rightAnswer){
-                score++;
-                questionScore.setText("Score:"+score+"/"+totalQuestions );
+                score+=scoreOfAnAnswer;
+                questionScore.setText("Score:"+score );
+                correctAnswers++;
+            } else{
+                if(selectedAnswer != null)
+                incorrectAnswers++;
             }
+            selectedAnswer = null;
             questionIndex++;
             if (questionIndex >= totalQuestions){
-                finishQuiz();
+                Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
+                toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
+                toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
+                toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
+                toFinishQuizActivity.putExtra("correctAns",correctAnswers);
+                toFinishQuizActivity.putExtra("totalQues",totalQuestions);
+                startActivity(toFinishQuizActivity);
             } else {
                 loadQuestions(questionIndex);
             }
@@ -132,30 +145,31 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             ans = selectedAnswer;
         }
     }
-    public void finishQuiz(){
-        new AlertDialog.Builder(this)
-                .setTitle("FinishQuiz")
-                .setMessage(String.format("Score: %d (Correct Answers: %d/%d)", score,score,totalQuestions))
-                .setPositiveButton("Restar", ((dialogInterface, i) -> restartQuiz()))
-                .setNegativeButton("Review", new DialogInterface.OnClickListener(){
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent toReviewActivity = new Intent(QuestionActivity.this,ReviewActivity.class);
-                        toReviewActivity.putStringArrayListExtra("selectedAns",selectedAns);
-                        toReviewActivity.putExtra("Score",questionScore.getText().toString().trim());
-                        startActivity(toReviewActivity);
-                    }
-                })
-                .show();
-    }
-
-    public void restartQuiz(){
-        score = 0;
-        questionIndex = 0;
-        loadQuestions(questionIndex);
-    }
 }
+//    public void finishQuiz(){
+//        new AlertDialog.Builder(this)
+//                .setTitle("FinishQuiz")
+//                .setMessage(String.format("Score: %d \nCorrect Answers: %d\nIncorrect Answers: %d\nSkip Question: %d", score,correctAnswers,incorrectAnswers,totalQuestions-(incorrectAnswers+correctAnswers)))
+//                .setPositiveButton("Restar", ((dialogInterface, i) -> restartQuiz()))
+//                .setNegativeButton("Review", new DialogInterface.OnClickListener(){
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Intent toReviewActivity = new Intent(QuestionActivity.this,ReviewActivity.class);
+//                        toReviewActivity.putStringArrayListExtra("selectedAns",selectedAns);
+//                        toReviewActivity.putExtra("Score",questionScore.getText().toString().trim());
+//                        startActivity(toReviewActivity);
+//                    }
+//                })
+//                .show();
+//    }
+
+//    public void restartQuiz(){
+//        score = 0;
+//        questionIndex = 0;
+//        loadQuestions(questionIndex);
+//    }
+//}
 
 
 //public class QuestionActivity extends AppCompatActivity implements View.OnClickListener{ // Alt+Enter

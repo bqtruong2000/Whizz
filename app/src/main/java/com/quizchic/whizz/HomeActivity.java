@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,11 +23,10 @@ public class HomeActivity extends AppCompatActivity {
         String name = i.getStringExtra("username");
 
         ImageButton user = (ImageButton) findViewById(R.id.user);
-        TextView question = (TextView) findViewById(R.id.home_question1);
+        Button question = (Button) findViewById(R.id.home_question1);
         MediaPlayer soundBackGround = MediaPlayer.create(this, R.raw.soundbackground);
         soundBackGround.setLooping(true);
         soundBackGround.start();
-
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
                 toUserActivity.putExtra("username",name);
                 startActivity(toUserActivity);
                 soundBackGround.pause();
+
             }
         });
 
