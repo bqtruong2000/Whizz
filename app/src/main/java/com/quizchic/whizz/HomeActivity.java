@@ -27,6 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         MediaPlayer soundBackGround = MediaPlayer.create(this, R.raw.soundbackground);
         soundBackGround.setLooping(true);
         soundBackGround.start();
+        TextView nameOfUser = (TextView) findViewById(R.id.home_userName);
+        displayUserName(name,nameOfUser);
+
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,5 +48,15 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(toQuestionActivity);
             }
         });
+    }
+
+    public void displayUserName(String name, TextView nameOfUser){
+        String nullName = "Wellcome User";
+        if(name.equalsIgnoreCase("") == false ){
+            nameOfUser.append("Wellcome " + name);
+        }
+        else if(name.equalsIgnoreCase("") == true ) {
+            nameOfUser.append(nullName);
+        }
     }
 }
