@@ -34,7 +34,7 @@ public class UserActivity extends AppCompatActivity {
                 startActivity(toHomeActivity);
             }
         });
-        displayUserName(name,nameOfUser);
+        displayUserName(MainActivity.userName,nameOfUser);
     }
 
     public void displayUserName(String name, TextView nameOfUser){

@@ -28,13 +28,13 @@ public class HomeActivity extends AppCompatActivity {
         soundBackGround.setLooping(true);
         soundBackGround.start();
         TextView nameOfUser = (TextView) findViewById(R.id.home_userName);
-        displayUserName(name,nameOfUser);
+        displayUserName(MainActivity.userName,nameOfUser);
 
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toUserActivity = new Intent(HomeActivity.this,UserActivity.class);
-                toUserActivity.putExtra("username",name);
+//                toUserActivity.putExtra("username",name);
                 startActivity(toUserActivity);
                 soundBackGround.pause();
 
