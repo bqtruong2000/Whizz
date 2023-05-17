@@ -23,9 +23,8 @@ public class SettingActivity extends AppCompatActivity {
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         boolean isEnabled;
-        boolean isMusicAnswerEnabled;
+        //boolean isAnswerEnabled;
 
         MediaPlayer soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
         soundBackGround.setLooping(true);
@@ -65,14 +64,14 @@ public class SettingActivity extends AppCompatActivity {
         });
 
 
-        isMusicAnswerEnabled = sharedPreferences.getBoolean("isMusicAnswerEnabled", false);
-        se_switch.setChecked(isMusicAnswerEnabled);
+        /*isAnswerEnabled = sharedPreferences.getBoolean("isAnswerEnabled", false);
+        se_switch.setChecked(isAnswerEnabled);
         se_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferences.edit().putBoolean("isMusicAnswerEnabled", isChecked).apply();
+                sharedPreferences.edit().putBoolean("isAnswerEnabled", isChecked).apply();
             }
-        });
+        });*/
 
 
     }

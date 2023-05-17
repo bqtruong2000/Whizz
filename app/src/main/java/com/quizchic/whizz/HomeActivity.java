@@ -22,6 +22,9 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton setting = (ImageButton) findViewById(R.id.settings);
         ImageButton user = (ImageButton) findViewById(R.id.user);
         Button question = (Button) findViewById(R.id.home_question1);
+
+        TextView nameOfUser = (TextView) findViewById(R.id.home_userName);
+        displayUserName(MainActivity.userName,nameOfUser);
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,5 +47,15 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(toQuestionActivity);
             }
         });
+    }
+
+    public void displayUserName(String name, TextView nameOfUser){
+        String nullName = "Wellcome User";
+        if(name.equalsIgnoreCase("") == false ){
+            nameOfUser.append("Wellcome " + name);
+        }
+        else if(name.equalsIgnoreCase("") == true ) {
+            nameOfUser.append(nullName);
+        }
     }
 }
