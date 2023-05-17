@@ -12,20 +12,23 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class UserActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        Intent i = getIntent();
-        String name = i.getStringExtra("username");
-
 
         TextView nameOfUser = (TextView) findViewById(R.id.usersname);
         ImageButton homeButton = (ImageButton) findViewById(R.id.home);
+        ImageButton setting = (ImageButton) findViewById(R.id.settings);
 
-
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toUserActivity = new Intent(UserActivity.this, SettingActivity.class);
+                startActivity(toUserActivity);
+            }
+        });
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
