@@ -8,10 +8,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,19 +23,22 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
     int score = 0,scoreOfAnAnswer = 50;
     int correctAnswers = 0, incorrectAnswers = 0;
     private int totalQuestions;
 
-    TextView questionTextView,questionScore;
+    TextView questionTextView,questionScore, questionTimer;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
     String ans;
 
     ArrayList questions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
+
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         String json = getJson("question.json");
         convertJsonToQuestions(json);
         totalQuestions = questions.size();
+
 
         init();
         loadQuestions(questionIndex);
@@ -84,6 +91,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     public void init(){
         questionScore = findViewById(R.id.question_score);
         questionTextView= findViewById(R.id.question_displayPlace);
+        questionTimer = findViewById(R.id.question_timer);
         ansA_Btn= findViewById(R.id.question_answer1);
         ansB_Btn= findViewById(R.id.question_answer2);
         ansC_Btn= findViewById(R.id.question_answer3);
@@ -98,6 +106,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void loadQuestions(int index){
+
+        countTimer();
         questionScore.setText("Score:"+score );
         Question question = (Question) questions.get(index);
         rightAnswer = question.getAnswer();
@@ -106,6 +116,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansB_Btn.setText(question.getOption1());
         ansC_Btn.setText(question.getOption2());
         ansD_Btn.setText(question.getOption3());
+
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -128,6 +139,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             }
             selectedAnswer = null;
             questionIndex++;
+
             if (questionIndex >= totalQuestions){
                 Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
                 toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
@@ -137,6 +149,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 toFinishQuizActivity.putExtra("totalQues",totalQuestions);
                 startActivity(toFinishQuizActivity);
             } else {
+                if (countDownTimer != null) {
+                    countDownTimer.cancel();
+                }
+
                 loadQuestions(questionIndex);
             }
         } else{
@@ -145,6 +161,39 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             ans = selectedAnswer;
         }
     }
+
+    public void countTimer(){
+        countDownTimer = new CountDownTimer(60000,1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000) % 60;
+                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
+                questionTimer.setText(String.format("Time: "+"%02d:%02d", minutes,seconds));
+            }
+
+            @Override
+            public void onFinish() {
+                questionIndex++;
+                if (questionIndex >= totalQuestions){
+                    Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
+                    toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
+                    toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
+                    toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
+                    toFinishQuizActivity.putExtra("correctAns",correctAnswers);
+                    toFinishQuizActivity.putExtra("totalQues",totalQuestions);
+                    startActivity(toFinishQuizActivity);
+                }
+                else{
+                    loadQuestions(questionIndex);
+                }
+
+            }
+        };
+        countDownTimer.start();
+    }
+
+
 }
 //    public void finishQuiz(){
 //        new AlertDialog.Builder(this)

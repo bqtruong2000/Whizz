@@ -2,5 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aguafina_script</item>
+        <item>@font/eater</item>
+        <item>@font/henny_penny</item>
+        <item>@font/new_rocker</item>
+        <item>@font/rye</item>
     </array>
 </resources>
