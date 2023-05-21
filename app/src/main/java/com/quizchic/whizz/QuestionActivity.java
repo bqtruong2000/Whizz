@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
@@ -27,11 +28,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int totalQuestions;
 
     TextView questionTextView,questionScore;
+
+    public static String[][] answersShuffled = new String[10][4];
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
     String ans;
 
-    ArrayList questions = new ArrayList<Question>();
+    public static ArrayList questions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
 
     @Override
@@ -97,15 +100,29 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         submitBtn.setOnClickListener(this);
     }
 
+     public void shuffleAns(int index, Question question){
+        ArrayList<String> answers = new ArrayList<>();
+        answers.add(question.getAnswer());
+        answers.add(question.getOption1());
+        answers.add(question.getOption2());
+        answers.add(question.getOption3());
+
+        Collections.shuffle(answers);
+        for(int i = 0; i < 4; i++){
+            answersShuffled[index][i] = answers.get(i);
+        }
+     }
+
     public void loadQuestions(int index){
         questionScore.setText("Score:"+score );
         Question question = (Question) questions.get(index);
         rightAnswer = question.getAnswer();
         questionTextView.setText(question.getQuestion());
-        ansA_Btn.setText(question.getAnswer());
-        ansB_Btn.setText(question.getOption1());
-        ansC_Btn.setText(question.getOption2());
-        ansD_Btn.setText(question.getOption3());
+        shuffleAns(index,question);
+        ansA_Btn.setText(answersShuffled[index][0]);
+        ansB_Btn.setText(answersShuffled[index][1]);
+        ansC_Btn.setText(answersShuffled[index][2]);
+        ansD_Btn.setText(answersShuffled[index][3]);
     }
 
     @SuppressLint("SuspiciousIndentation")

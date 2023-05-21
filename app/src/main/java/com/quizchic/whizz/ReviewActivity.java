@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
-    QuestionList questions = new QuestionList();
+    ArrayList<Question> questions = QuestionActivity.questions;
     int totalQuestions = questions.size();
     TextView questionTextView,questionScore;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, next_Btn, previous_Btn;
@@ -34,6 +34,8 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     Button selectedBtn;
     ArrayList<String> selectedAns;
     String yourScore;
+
+    String[][] answersShuffled = QuestionActivity.answersShuffled;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
 
         init();
         loadQuestions(questionIndex);
-        loadCheck(questionIndex);
+        loadCheck();
     }
 
 
@@ -78,10 +80,10 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         Question question = questions.get(index);
         rightAnswer = question.getAnswer();
         questionTextView.setText(question.getQuestion());
-        ansA_Btn.setText(question.getAnswer());
-        ansB_Btn.setText(question.getOption1());
-        ansC_Btn.setText(question.getOption2());
-        ansD_Btn.setText(question.getOption3());
+        ansA_Btn.setText(answersShuffled[index][0]);
+        ansB_Btn.setText(answersShuffled[index][1]);
+        ansC_Btn.setText(answersShuffled[index][2]);
+        ansD_Btn.setText(answersShuffled[index][3]);
     }
 
     public void warningReviewLimit(){
@@ -101,9 +103,9 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void review(){
-        loadCheck(questionIndex);
+        loadCheck();
     }
-    public void loadCheck(int questionIndex){
+    public void loadCheck(){
         if(checkSelectedAnsver() != 0){
             selectedBtn = findViewById(checkSelectedAnsver());
             if(selectedBtn.getText().equals(rightAnswer)){
@@ -152,7 +154,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             if(questionIndex < totalQuestions-1){
                 questionIndex++;
                 loadQuestions(questionIndex);
-                loadCheck(questionIndex);
+                loadCheck();
             }else{
                 warningReviewLimit();
             }
@@ -160,7 +162,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             if(questionIndex>0){
                 questionIndex --;
                 loadQuestions(questionIndex);
-                loadCheck(questionIndex);
+                loadCheck();
                 }
             }
         }
