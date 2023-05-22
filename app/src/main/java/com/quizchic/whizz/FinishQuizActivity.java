@@ -31,14 +31,15 @@ public class FinishQuizActivity extends AppCompatActivity {
         int incorrectAnswers = intent.getIntExtra("incorrectAns",0);
         int correctAnswers = intent.getIntExtra("correctAns",0);
         int totalQuestions = intent.getIntExtra("totalQues",0);
+        int outOfTimeAnswers = intent.getIntExtra("outOfTimeAns",0);
         new AlertDialog.Builder(this)
                 .setTitle("FinishQuiz")
-                .setMessage(String.format("%s\nCorrect Answers: %d\nIncorrect Answers: %d\nSkip Question: %d", yourScore,correctAnswers,incorrectAnswers,totalQuestions-(incorrectAnswers+correctAnswers)))
+                .setMessage(String.format("%s\nCorrect Answers: %d\nIncorrect Answers: %d\nTime Out Question: %d\nSkip Question: %d", yourScore,correctAnswers,incorrectAnswers,outOfTimeAnswers,totalQuestions-(incorrectAnswers+correctAnswers+outOfTimeAnswers)))
                 .setPositiveButton("Restar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent toReviewActivity = new Intent(FinishQuizActivity.this,QuestionActivity.class);
-                        startActivity(toReviewActivity);
+                        Intent toQuestionActivity = new Intent(FinishQuizActivity.this,QuestionActivity.class);
+                        startActivity(toQuestionActivity);
                     }
                 })
                 .setNegativeButton("Review", new DialogInterface.OnClickListener(){
