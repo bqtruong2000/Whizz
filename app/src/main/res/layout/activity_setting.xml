@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,8 +23,6 @@
         android:layout_marginBottom="0dp"
         app:srcCompat="@drawable/rounded_corner" />
 
-
-
     <LinearLayout
 
         android:layout_width="wrap_content"
@@ -45,7 +44,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/home_selected"
+            android:src="@drawable/home"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,UseAppTint"
             android:animateLayoutChanges="true"/>
 
@@ -72,67 +71,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:src="@drawable/settings"
+            android:src="@drawable/setting_selected"
             android:background="?android:attr/selectableItemBackground"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/home_question1"
-        android:layout_width="339dp"
-        android:layout_height="135dp"
-        android:layout_above="@+id/imageView2"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="394dp"
-        android:backgroundTint="#C9FEFB"
-        android:gravity="center"
-        android:paddingBottom="5dp"
-        android:src="@drawable/whiterectangle"
-        android:text="Object-Oriented Programming"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/textView"
-        android:layout_width="339dp"
-        android:layout_height="135dp"
-        android:layout_above="@+id/imageView2"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="226dp"
-        android:backgroundTint="#C9FEFB"
-        android:gravity="center"
-        android:paddingBottom="5dp"
-        android:src="@drawable/whiterectangle"
-        android:text="Database Fundamental"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/textView2"
-        android:layout_width="339dp"
-        android:layout_height="135dp"
-        android:layout_above="@+id/imageView2"
-        android:layout_alignParentEnd="true"
+    <Switch
+        android:id="@+id/switch_sound1"
+        android:layout_width="176dp"
+        android:layout_height="29dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/whiterectangle"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:text="Computer Systems"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:paddingBottom="5dp"
-        android:backgroundTint="#C9FEFB"/>
+        android:layout_marginTop="333dp"
+        android:text="Sound Background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:thumbTint="@drawable/switch_thumb"
+        app:trackTint="@drawable/switch_track"
+        tools:layout_editor_absoluteY="188dp" />
 
+    <Switch
+        android:id="@+id/switch_sound2"
+        android:layout_width="176dp"
+        android:layout_height="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="372dp"
+        android:text="Sound Effect"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="217dp"/>
 
 </RelativeLayout>
