@@ -1,5 +1,7 @@
 package com.quizchic.whizz;
 
+import static java.lang.Math.random;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +25,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,9 +39,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
     String ans;
+    ArrayList<Integer> indexList = new ArrayList<Integer>();
 
-    public static ArrayList questions = new ArrayList<Question>();
+    static ArrayList questions = new ArrayList<Question>();
+    public static ArrayList choosenQuestions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
+
+    public static int occurActivityTimes = 0;
 
     private CountDownTimer countDownTimer;
 
@@ -46,11 +53,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
-        questions.clear();
-        String json = getJson("question.json");
-        convertJsonToQuestions(json);
-        totalQuestions = questions.size();
+        choosenQuestions.clear();
+        if(occurActivityTimes%2 == 0) {
+            String json = getJson("question.json");
+            convertJsonToQuestions(json);
+            Collections.shuffle(questions);
+        }
+        occurActivityTimes++;
+        totalQuestions = 5;
 
 
         init();
@@ -124,10 +134,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     public void loadQuestions(int index){
 
         countTimer();
-        questionScore.setText("Score:"+score );
-        Question question = (Question) questions.get(index);
+        questionScore.setText("Score: "+score );
+        Question question = (Question) questions.get(0);
+        choosenQuestions.add(question);
+        questions.remove(0);
         rightAnswer = question.getAnswer();
-        questionTextView.setText(question.getQuestion());
+        questionTextView.setText((index+1)+"."+question.getQuestion());
         shuffleAns(index,question);
         ansA_Btn.setText(answersShuffled[index][0]);
         ansB_Btn.setText(answersShuffled[index][1]);
@@ -147,7 +159,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             selectedAns.add(ans);
             if (selectedAnswer == rightAnswer){
                 score+=scoreOfAnAnswer;
-                questionScore.setText("Score:"+score );
+                questionScore.setText("Score: "+score );
                 correctAnswers++;
             } else{
                 if(selectedAnswer != null)
@@ -156,6 +168,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             selectedAnswer = null;
             questionIndex++;
             if (questionIndex >= totalQuestions){
+                countDownTimer.cancel();
                 Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
                 toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
                 toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
@@ -179,7 +192,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-        countDownTimer = new CountDownTimer(10000,1000) {
+        countDownTimer = new CountDownTimer(5000,1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -193,7 +206,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 selectedAns.add(ans);
                 if (selectedAnswer == rightAnswer){
                     score+=scoreOfAnAnswer;
-                    questionScore.setText("Score:"+score );
+                    questionScore.setText("Score: "+score );
                     correctAnswers++;
                 } else if(selectedAnswer != null){
                         incorrectAnswers++;
