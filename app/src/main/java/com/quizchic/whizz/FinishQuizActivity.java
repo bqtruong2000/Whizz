@@ -3,11 +3,13 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -31,27 +33,38 @@ public class FinishQuizActivity extends AppCompatActivity {
         int incorrectAnswers = intent.getIntExtra("incorrectAns",0);
         int correctAnswers = intent.getIntExtra("correctAns",0);
         int totalQuestions = intent.getIntExtra("totalQues",0);
-        int outOfTimeAnswers = intent.getIntExtra("outOfTimeAns",0);
-        new AlertDialog.Builder(this)
-                .setTitle("FinishQuiz")
-                .setMessage(String.format("%s\nCorrect Answers: %d\nIncorrect Answers: %d\nTime Out Question: %d\nSkip Question: %d", yourScore,correctAnswers,incorrectAnswers,outOfTimeAnswers,totalQuestions-(incorrectAnswers+correctAnswers+outOfTimeAnswers)))
-                .setPositiveButton("Restar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent toQuestionActivity = new Intent(FinishQuizActivity.this,QuestionActivity.class);
-                        startActivity(toQuestionActivity);
-                    }
-                })
-                .setNegativeButton("Review", new DialogInterface.OnClickListener(){
+        int outOfTimeQuestions = intent.getIntExtra("outOfTimeAns",0);
+        TextView score = findViewById(R.id.finishQuiz_score);
+        TextView correctAns = findViewById(R.id.finishQuiz_correctAns);
+        TextView incorrectAns = findViewById(R.id.finishQuiz_incorrectAns);
+        TextView timeOutOfQues = findViewById(R.id.finishQuiz_timeOutOfQues);
+        TextView skipQues = findViewById(R.id.finishQuiz_skipQues);
 
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent toReviewActivity = new Intent(FinishQuizActivity.this,ReviewActivity.class);
-                        toReviewActivity.putStringArrayListExtra("selectedAns",selectedAns);
-                        toReviewActivity.putExtra("Score",yourScore);
-                        startActivity(toReviewActivity);
-                    }
-                })
-                .show();
+        score.setText(yourScore);
+        correctAns.setText("- Correct Answers: "+ correctAnswers);
+        incorrectAns.setText("- Incorrect Answers: "+ incorrectAnswers);
+        timeOutOfQues.setText("- Time Out Question: "+ outOfTimeQuestions);
+        skipQues.setText("- Skip Question: "+(totalQuestions-(incorrectAnswers+correctAnswers+outOfTimeQuestions)));
+
+        Button restart = findViewById(R.id.finishQuiz_restart);
+        Button review = findViewById(R.id.finishQuiz_review);
+
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toQuestionActivity = new Intent(FinishQuizActivity.this,QuestionActivity.class);
+                startActivity(toQuestionActivity);
+            }
+        });
+
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toReviewActivity = new Intent(FinishQuizActivity.this,ReviewActivity.class);
+                toReviewActivity.putStringArrayListExtra("selectedAns",selectedAns);
+                toReviewActivity.putExtra("Score",yourScore);
+                startActivity(toReviewActivity);
+            }
+        });
     }
 }
