@@ -1,69 +1,69 @@
 [
   {
-    "question": "1. Who invented OOP?",
+    "question": "Who invented OOP?",
     "answer": "Alan Kay",
     "option1": "Adele Goldberg",
     "option2": "Andrea Ferro",
     "option3": "Dennis Ritchie"
   },
   {
-    "question": "2. Which is not a feature of OOP in general definitions?",
+    "question": "Which is not a feature of OOP in general definitions?",
     "answer": "Duplicate/Redundant data",
     "option1": "Efficient Code",
     "option2": "Code reusability",
     "option3": "Modularity"
   },
   {
-    "question": "3. Which was the first purely object oriented programming language developed?",
+    "question": "Which was the first purely object oriented programming language developed?",
     "answer": "SmallTalk",
     "option1": "Kotlin",
     "option2": "Java",
     "option3": "C++"
   },
   {
-    "question": "4. When OOP concept did first came into picture?",
+    "question": "When OOP concept did first came into picture?",
     "answer": "1970’s",
     "option1": "1980’s",
     "option2": "1995",
     "option3": "1993"
   },
   {
-    "question": "5. Which feature of OOP indicates code reusability?",
+    "question": "Which feature of OOP indicates code reusability?",
     "answer": "Inheritance",
     "option1": "Polymorphism.h",
     "option2": "Abstraction",
     "option3": "Encapsulation"
   },
   {
-    "question": "6. Which header file is required in C++ to use OOP?",
+    "question": "Which header file is required in C++ to use OOP?",
     "answer": "OOP can be used without using any header file",
     "option1": "stdlib.h",
     "option2": "iostream.h",
     "option3": "stdio.h"
   },
   {
-    "question": "7. Why Java is Partially OOP language?",
+    "question": "Why Java is Partially OOP language?",
     "answer": "It supports usual declaration of primitive data types",
     "option1": "It allows code to be written outside classes",
     "option2": "It does not support pointers",
     "option3": "It doesn’t support all types of inheritance"
   },
   {
-    "question": "8. Which among the following doesn’t come under OOP concept?",
+    "question": "Which among the following doesn’t come under OOP concept?",
     "answer": "Platform independent",
     "option1": "Data hiding",
     "option2": "Message passing",
     "option3": "Data binding"
   },
   {
-    "question": "9. Which is the correct syntax of inheritance?",
+    "question": "Which is the correct syntax of inheritance?",
     "answer": "class derived_classname : access base_classname{ /*define class body*/ };",
     "option1": "class base_classname :access derived_classname{ /*define class body*/ };",
     "option2": "class derived_classname : base_classname{ /*define class body*/ };",
     "option3": "class base_classname : derived_classname{ /*define class body*/ };"
   },
   {
-    "question": "10. The feature by which one object can interact with another object is _____________",
+    "question": "The feature by which one object can interact with another object is _____________",
     "answer": "Message Passing",
     "option1": "Message reading",
     "option2": "Data transfer",
