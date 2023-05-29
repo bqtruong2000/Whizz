@@ -24,8 +24,8 @@ import java.util.ArrayList;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
-    ArrayList<Question> questions = QuestionActivity.questions;
-//    int totalQuestions = questions.size();
+
+    ArrayList<Question> questions = QuestionActivity.choosenQuestions;
     int totalQuestions = 5;
 
     TextView questionTextView,questionScore;
