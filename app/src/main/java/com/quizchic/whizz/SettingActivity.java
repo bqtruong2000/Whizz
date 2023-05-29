@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 
 public class SettingActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +20,15 @@ public class SettingActivity extends AppCompatActivity {
         ImageButton home = (ImageButton)findViewById(R.id.home);
         ImageButton user = (ImageButton) findViewById(R.id.user);
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
-        Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         boolean isEnabled;
+        final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         //boolean isAnswerEnabled;
 
         MediaPlayer soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
         //soundBackGround.setLooping(true);
-        isEnabled = sharedPreferences.getBoolean("isEnabled", false);
-        sbg_switch.setChecked(isEnabled);
+        //isEnabled = sharedPreferences.getBoolean("isEnabled", false);
+        sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabled", false));
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +56,10 @@ public class SettingActivity extends AppCompatActivity {
                         soundBackGround.setLooping(true);
                     }
                 } else {
-                    //if (soundBackGround.isPlaying()) {
+                    if (soundBackGround.isPlaying()) {
                         soundBackGround.pause();
                     }
-                //}
+                }
             }
         });
 

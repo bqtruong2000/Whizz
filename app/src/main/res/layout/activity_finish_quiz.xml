@@ -14,9 +14,6 @@
         app:srcCompat="@drawable/home_island"
         android:layout_alignParentTop="true"/>
 
-
-
-
     <Button
         android:id="@+id/finish_previous"
         android:layout_width="45dp"
