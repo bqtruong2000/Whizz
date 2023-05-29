@@ -50,8 +50,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         questions.clear();
         String json = getJson("question.json");
         convertJsonToQuestions(json);
-        totalQuestions = questions.size();
+        Collections.shuffle(questions);
+//        totalQuestions = questions.size();
 
+        totalQuestions = 5;
 
         init();
         loadQuestions(questionIndex);
@@ -122,17 +124,36 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
      }
 
     public void loadQuestions(int index){
-
+        ansA_Btn.setVisibility(View.VISIBLE);
+        ansB_Btn.setVisibility(View.VISIBLE);
+        ansC_Btn.setVisibility(View.VISIBLE);
+        ansD_Btn.setVisibility(View.VISIBLE);
         countTimer();
-        questionScore.setText("Score:"+score );
+        questionScore.setText("     Score: "+score + " (" + (questionIndex+1) + "/" + totalQuestions +")");
         Question question = (Question) questions.get(index);
         rightAnswer = question.getAnswer();
-        questionTextView.setText(question.getQuestion());
+        questionTextView.setText((index+1) + "." +question.getQuestion());
         shuffleAns(index,question);
         ansA_Btn.setText(answersShuffled[index][0]);
+        if(ansA_Btn.getText().toString().equals("TFNULL")){
+            ansA_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansB_Btn.setText(answersShuffled[index][1]);
+        if(ansB_Btn.getText().toString().equals("TFNULL")){
+            ansB_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansC_Btn.setText(answersShuffled[index][2]);
+        if(ansC_Btn.getText().toString().equals("TFNULL")){
+            ansC_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansD_Btn.setText(answersShuffled[index][3]);
+        if(ansD_Btn.getText().toString().equals("TFNULL")){
+            ansD_Btn.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -179,7 +200,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-        countDownTimer = new CountDownTimer(10000,1000) {
+        countDownTimer = new CountDownTimer(60000,1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -193,7 +214,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 selectedAns.add(ans);
                 if (selectedAnswer == rightAnswer){
                     score+=scoreOfAnAnswer;
-                    questionScore.setText("Score:"+score );
+                    questionScore.setText("Score: "+score );
                     correctAnswers++;
                 } else if(selectedAnswer != null){
                         incorrectAnswers++;

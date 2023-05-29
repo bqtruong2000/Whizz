@@ -1,72 +1,143 @@
 [
   {
-    "question": "1. Who invented OOP?",
+    "question": "Who invented OOP?",
     "answer": "Alan Kay",
     "option1": "Adele Goldberg",
     "option2": "Andrea Ferro",
     "option3": "Dennis Ritchie"
   },
   {
-    "question": "2. Which is not a feature of OOP in general definitions?",
+    "question": "Which is not a feature of OOP in general definitions?",
     "answer": "Duplicate/Redundant data",
     "option1": "Efficient Code",
     "option2": "Code reusability",
     "option3": "Modularity"
   },
   {
-    "question": "3. Which was the first purely object oriented programming language developed?",
+    "question": "Which was the first purely object oriented programming language developed?",
     "answer": "SmallTalk",
     "option1": "Kotlin",
     "option2": "Java",
     "option3": "C++"
   },
   {
-    "question": "4. When OOP concept did first came into picture?",
+    "question": "When OOP concept did first came into picture?",
     "answer": "1970’s",
     "option1": "1980’s",
     "option2": "1995",
     "option3": "1993"
   },
   {
-    "question": "5. Which feature of OOP indicates code reusability?",
+    "question": "Which feature of OOP indicates code reusability?",
     "answer": "Inheritance",
     "option1": "Polymorphism.h",
     "option2": "Abstraction",
     "option3": "Encapsulation"
   },
   {
-    "question": "6. Which header file is required in C++ to use OOP?",
+    "question": "Which header file is required in C++ to use OOP?",
     "answer": "OOP can be used without using any header file",
     "option1": "stdlib.h",
     "option2": "iostream.h",
     "option3": "stdio.h"
   },
   {
-    "question": "7. Why Java is Partially OOP language?",
+    "question": "Why Java is Partially OOP language?",
     "answer": "It supports usual declaration of primitive data types",
     "option1": "It allows code to be written outside classes",
     "option2": "It does not support pointers",
     "option3": "It doesn’t support all types of inheritance"
   },
   {
-    "question": "8. Which among the following doesn’t come under OOP concept?",
+    "question": "Which among the following doesn’t come under OOP concept?",
     "answer": "Platform independent",
     "option1": "Data hiding",
     "option2": "Message passing",
     "option3": "Data binding"
   },
   {
-    "question": "9. Which is the correct syntax of inheritance?",
+    "question": "Which is the correct syntax of inheritance?",
     "answer": "class derived_classname : access base_classname{ /*define class body*/ };",
     "option1": "class base_classname :access derived_classname{ /*define class body*/ };",
     "option2": "class derived_classname : base_classname{ /*define class body*/ };",
     "option3": "class base_classname : derived_classname{ /*define class body*/ };"
   },
   {
-    "question": "10. The feature by which one object can interact with another object is _____________",
+    "question": "The feature by which one object can interact with another object is _____________",
     "answer": "Message Passing",
     "option1": "Message reading",
     "option2": "Data transfer",
     "option3": "Data Binding"
+  },
+  {
+    "question": "In object-oriented programming, objects are instances of classes.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Encapsulation is a principle that combines data and methods into a single unit called an object.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Inheritance allows a class to inherit properties and methods from another class",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Polymorphism refers to the ability of an object to take on many forms and respond differently based on the context. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Abstraction is the process of hiding complex implementation details and exposing only essential features to the user. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming is limited to only a few programming languages and cannot be used in web development. ",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "In object-oriented programming, multiple inheritance allows a class to inherit from multiple classes.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Objects communicate with each other by sending messages and receiving responses.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming promotes reusability of code through the concept of classes and objects",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming is a programming paradigm that focuses on the procedural execution of code. ",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
   }
+
 ]
