@@ -66,9 +66,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         occurActivityTimes++;
         totalQuestions = 5;
 
-
-        totalQuestions = 5;
-
         init();
         loadQuestions(questionIndex);
     }
@@ -137,6 +134,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         }
      }
 
+     public int isTFQuestion(Question question){
+        String answer =question.getAnswer().toString().trim();
+        if(answer.equals("True") ||answer.equals("False")){
+            return 1;
+        }
+        return 0;
+     }
+
     public void loadQuestions(int index){
         ansA_Btn.setVisibility(View.VISIBLE);
         ansB_Btn.setVisibility(View.VISIBLE);
@@ -153,26 +158,34 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         questionTextView.setText((index+1)+"."+question.getQuestion());
 
         shuffleAns(index,question);
-        ansA_Btn.setText(answersShuffled[index][0]);
-        if(ansA_Btn.getText().toString().equals("TFNULL")){
-            ansA_Btn.setVisibility(View.INVISIBLE);
-        }
-
-        ansB_Btn.setText(answersShuffled[index][1]);
-        if(ansB_Btn.getText().toString().equals("TFNULL")){
-            ansB_Btn.setVisibility(View.INVISIBLE);
-        }
-
-        ansC_Btn.setText(answersShuffled[index][2]);
-        if(ansC_Btn.getText().toString().equals("TFNULL")){
+        if(isTFQuestion(question) == 1){
+            for(int i = 0; i<4; i++){
+                if(!answersShuffled[index][i].equals("TFNULL")){
+                    ansA_Btn.setText(answersShuffled[index][i]);
+                    answersShuffled[index][0] = answersShuffled[index][i];
+                    if(i!=0){
+                        answersShuffled[index][i] = "TFNULL";
+                    }
+                    break;
+                }
+            }
+            for(int i = 1; i<4; i++){
+                if(!answersShuffled[index][i].equals("TFNULL")){
+                    ansB_Btn.setText(answersShuffled[index][i]);
+                    answersShuffled[index][1] = answersShuffled[index][i];
+                    answersShuffled[index][2] = "TFNULL";
+                    answersShuffled[index][3] = "TFNULL";
+                    break;
+                }
+            }
             ansC_Btn.setVisibility(View.INVISIBLE);
-        }
-
-        ansD_Btn.setText(answersShuffled[index][3]);
-        if(ansD_Btn.getText().toString().equals("TFNULL")){
             ansD_Btn.setVisibility(View.INVISIBLE);
+        }else {
+            ansA_Btn.setText(answersShuffled[index][0]);
+            ansB_Btn.setText(answersShuffled[index][1]);
+            ansC_Btn.setText(answersShuffled[index][2]);
+            ansD_Btn.setText(answersShuffled[index][3]);
         }
-
     }
 
     @SuppressLint("SuspiciousIndentation")
