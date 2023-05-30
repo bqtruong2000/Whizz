@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
@@ -191,6 +192,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @SuppressLint("SuspiciousIndentation")
     @Override
     public void onClick(View view) {
+        MediaPlayer seca= MediaPlayer.create(this,R.raw.soundcorrectanswer);
+        MediaPlayer swca= MediaPlayer.create(this,R.raw.soundwronganswer);
         Button clickedButton = (Button) view;
         ansA_Btn.setBackgroundColor(733757);
         ansB_Btn.setBackgroundColor(733757);
@@ -202,9 +205,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 score+=scoreOfAnAnswer;
                 questionScore.setText("Score: "+score );
                 correctAnswers++;
+                seca.start();
             } else{
                 if(selectedAnswer != null)
                 incorrectAnswers++;
+                swca.start();
             }
             selectedAnswer = null;
             questionIndex++;

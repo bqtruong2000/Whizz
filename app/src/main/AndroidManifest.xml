@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Whizz"
         tools:targetApi="31">
         <activity
+            android:name=".ThirdIntroduction"
+            android:exported="false" />
+        <activity
             android:name=".SecondIntroductionActivity"
             android:exported="false" />
         <activity
@@ -51,7 +54,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <service android:name="services.BackgroundMusicService"/>
+
+        <service android:name="services.BackgroundMusicService" />
     </application>
 
 </manifest>

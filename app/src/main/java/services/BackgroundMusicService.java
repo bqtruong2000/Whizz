@@ -20,9 +20,10 @@ public class BackgroundMusicService extends Service {
     public IBinder onBind(Intent intent) {return null;}
     @Override
     public int onStartCommand(Intent intent, int flag, int startID){
-        Log.d("mylog","Starting playing");
+        //Log.d("mylog","Starting playing");
         sbg = MediaPlayer.create(this, R.raw.soundbackground);
         sbg.start();
+        sbg.setLooping(true);
         return super.onStartCommand(intent, flag, startID);
     }
      @Override
