@@ -24,8 +24,10 @@ import java.util.ArrayList;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
+
     ArrayList<Question> questions = QuestionActivity.choosenQuestions;
     int totalQuestions = 5;
+
     TextView questionTextView,questionScore;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, next_Btn, previous_Btn;
     String rightAnswer;
@@ -70,6 +72,10 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void loadQuestions(int index){
+        ansA_Btn.setVisibility(View.VISIBLE);
+        ansB_Btn.setVisibility(View.VISIBLE);
+        ansC_Btn.setVisibility(View.VISIBLE);
+        ansD_Btn.setVisibility(View.VISIBLE);
         if (questionIndex == 0) {
             previous_Btn.setEnabled(false);
             previous_Btn.setDrawingCacheBackgroundColor(Color.GRAY);
@@ -79,11 +85,26 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         }
         Question question = questions.get(index);
         rightAnswer = question.getAnswer();
-        questionTextView.setText(question.getQuestion());
+        questionTextView.setText((index +1) + "." + question.getQuestion());
         ansA_Btn.setText(answersShuffled[index][0]);
+        if(ansA_Btn.getText().toString().equals("TFNULL")){
+            ansA_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansB_Btn.setText(answersShuffled[index][1]);
+        if(ansB_Btn.getText().toString().equals("TFNULL")){
+            ansB_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansC_Btn.setText(answersShuffled[index][2]);
+        if(ansC_Btn.getText().toString().equals("TFNULL")){
+            ansC_Btn.setVisibility(View.INVISIBLE);
+        }
+
         ansD_Btn.setText(answersShuffled[index][3]);
+        if(ansD_Btn.getText().toString().equals("TFNULL")){
+            ansD_Btn.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void warningReviewLimit(){

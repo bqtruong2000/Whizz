@@ -68,5 +68,76 @@
     "option1": "Message reading",
     "option2": "Data transfer",
     "option3": "Data Binding"
+  },
+  {
+    "question": "In object-oriented programming, objects are instances of classes.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Encapsulation is a principle that combines data and methods into a single unit called an object.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Inheritance allows a class to inherit properties and methods from another class",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Polymorphism refers to the ability of an object to take on many forms and respond differently based on the context. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Abstraction is the process of hiding complex implementation details and exposing only essential features to the user. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming is limited to only a few programming languages and cannot be used in web development. ",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "In object-oriented programming, multiple inheritance allows a class to inherit from multiple classes.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Objects communicate with each other by sending messages and receiving responses.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming promotes reusability of code through the concept of classes and objects",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Object-oriented programming is a programming paradigm that focuses on the procedural execution of code. ",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
   }
+
 ]

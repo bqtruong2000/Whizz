@@ -18,7 +18,7 @@
         android:backgroundTint="#C9FEFB"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <Button
@@ -66,8 +66,8 @@
         android:layout_marginEnd="70dp"
         android:text="Score: 0/0"
         android:textSize="20dp"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/question_submit"
@@ -78,16 +78,18 @@
         android:layout_marginTop="-2dp"
         android:layout_marginEnd="25dp"
         android:backgroundTint="#0B323D"
-        android:text="Submit" />
+        android:text="Submit"
+
+        />
 
     <TextView
         android:id="@+id/question_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Timer: 00:00"
-        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginTop="82dp"
-        android:layout_marginLeft="70dp"/>
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/black"/>
 </RelativeLayout>
