@@ -12,7 +12,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
+import services.BackgroundMusicService;
+
 public class SettingActivity extends AppCompatActivity {
+    Boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +24,11 @@ public class SettingActivity extends AppCompatActivity {
         ImageButton user = (ImageButton) findViewById(R.id.user);
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         //Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
-        boolean isEnabled;
+        //boolean isEnabled;
         final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         //boolean isAnswerEnabled;
 
-        MediaPlayer soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
+        //MediaPlayer soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
         //soundBackGround.setLooping(true);
         //isEnabled = sharedPreferences.getBoolean("isEnabled", false);
         sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabled", false));
@@ -51,13 +54,17 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 sharedPreferences.edit().putBoolean("isEnabled", isChecked).apply();
                 if (isChecked) {
-                    if (!soundBackGround.isPlaying()) {
-                        soundBackGround.start();
-                        soundBackGround.setLooping(true);
+                   if (!isPlaying) {
+                       /* soundBackGround.start();
+                        soundBackGround.setLooping(true);*/
+                       startService(new Intent(SettingActivity.this, BackgroundMusicService.class));
+                       isPlaying= true;
                     }
                 } else {
-                    if (soundBackGround.isPlaying()) {
-                        soundBackGround.pause();
+                    if (isPlaying) {
+                        //soundBackGround.pause();
+                        stopService(new Intent(SettingActivity.this, BackgroundMusicService.class));
+                        isPlaying = false;
                     }
                 }
             }

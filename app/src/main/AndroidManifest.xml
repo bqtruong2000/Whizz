@@ -27,9 +27,6 @@
             android:name=".FinishQuizActivity"
             android:exported="false" />
         <activity
-            android:name=".finishQuizActivity"
-            android:exported="false" />
-        <activity
             android:name=".ReviewActivity"
             android:exported="false" />
         <activity
@@ -54,6 +51,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <service android:name="services.BackgroundMusicService"/>
     </application>
 
 </manifest>
