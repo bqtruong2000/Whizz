@@ -22,6 +22,8 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         ImageButton home = (ImageButton)findViewById(R.id.home);
         ImageButton user = (ImageButton) findViewById(R.id.user);
+        ImageButton add = (ImageButton) findViewById(R.id.add);
+
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         //Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         //boolean isEnabled;
@@ -38,6 +40,14 @@ public class SettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toHomeActivity = new Intent(SettingActivity.this, HomeActivity.class);
                 startActivity(toHomeActivity);
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toAddActivity = new Intent(SettingActivity.this, AddQuestionActivity.class);
+                startActivity(toAddActivity);
             }
         });
 

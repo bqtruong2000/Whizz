@@ -62,12 +62,12 @@
             android:animateLayoutChanges="true"/>
 
         <ImageButton
-            android:id="@+id/search"
+            android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/search"
+            android:src="@drawable/addbox"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
