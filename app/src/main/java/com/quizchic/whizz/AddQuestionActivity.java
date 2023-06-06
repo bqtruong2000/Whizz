@@ -3,6 +3,7 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +18,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 
 public class AddQuestionActivity extends AppCompatActivity {
@@ -51,35 +56,24 @@ public class AddQuestionActivity extends AppCompatActivity {
                 String getOption1 = option1Input.getText().toString();
                 String getOption2 = option2Input.getText().toString();
                 String getOption3 = option3Input.getText().toString();
-//                String getJS = "question"+':'+getQuestion + ",\n" + "answer"+ ':' + getAnswer + ",\n" + "option1"+ ':' + getOption1 + ",\n" + "option2"+ ':' + getOption2 + ",\n" + "option3"+ ':' + getOption3 + "\n";
-//                try{
-//                    JSONObject js = new JSONObject(getJS);
-//                    inputJSON(js);
-//                }catch(Throwable e){
-//                    Log.e("JSON", "Malformed JSON: \"" + getJS + "\"");
-//                }
 
-                File jsonFile = new File(getExternalFilesDir(null),"addQuestion.json");
-                JSONArray dataArray = new JSONArray();
-//                Question question = new Question(getQuestion,getAnswer,getOption1,getOption2,getOption3);
-                try {
-                    dataArray.put(new JSONObject().put("question",getQuestion).put("answer",getAnswer).put("option1",getOption1).put("option2",getOption2).put("option3",getOption3));
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
 
+                File file = new File(getExternalFilesDir(null), "question.txt");
+                JSONObject js = new JSONObject();
 
                 try {
-                    FileWriter fileWriter = new FileWriter(jsonFile);
-                    fileWriter.write(dataArray.toString());
-                    fileWriter.close();
+
+                    js.put("question",getQuestion);
+                    js.put("answer",getAnswer);
+                    js.put("option1",getOption1);
+                    js.put("option2",getOption2);
+                    js.put("option3",getOption3);
+                    writeToFile(js, file);
                     Intent toHomeActivity = new Intent(AddQuestionActivity.this, HomeActivity.class);
                     startActivity(toHomeActivity);
-                } catch (IOException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-//                File jsonFile = new File(getExternalFilesDir(null),"addQuestion.son");
-//                JSONArray dataArray = new JSONArray();
 
             }
         });
@@ -115,6 +109,17 @@ public class AddQuestionActivity extends AppCompatActivity {
                 startActivity(toHomeActivity);
             }
         });
+    }
+
+    public void writeToFile(JSONObject js, File file) {
+        // add-write text into file
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(js.toString());
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
