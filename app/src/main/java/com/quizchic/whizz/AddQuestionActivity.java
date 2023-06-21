@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,10 +53,10 @@ public class AddQuestionActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getQuestion = questionInput.getText().toString();
-                String getAnswer = answerInput.getText().toString();
-                String getOption1 = option1Input.getText().toString();
-                String getOption2 = option2Input.getText().toString();
+                String getQuestion = questionInput.getText().toString(); //question
+                String getAnswer = answerInput.getText().toString(); //answer
+                String getOption1 = option1Input.getText().toString(); //opt1
+                String getOption2 = option2Input.getText().toString(); //
                 String getOption3 = option3Input.getText().toString();
 
 
@@ -68,8 +70,15 @@ public class AddQuestionActivity extends AppCompatActivity {
                     js.put("option1",getOption1);
                     js.put("option2",getOption2);
                     js.put("option3",getOption3);
-                    writeToFile(js, file);
+                    writeToFile(js, file); //jsObj
                     Intent toHomeActivity = new Intent(AddQuestionActivity.this, HomeActivity.class);
+                    Context context = getApplicationContext();
+                    CharSequence text = "SUCCESSFULLY INSERT!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.TOP,0,250);
+                    toast.show();
                     startActivity(toHomeActivity);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,8 +123,8 @@ public class AddQuestionActivity extends AppCompatActivity {
     public void writeToFile(JSONObject js, File file) {
         // add-write text into file
         try {
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(js.toString());
+            FileWriter fileWriter = new FileWriter(file,true);
+            fileWriter.write(js.toString() + "\n");
             fileWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
