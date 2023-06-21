@@ -72,8 +72,8 @@ public class AddQuestionActivity extends AppCompatActivity {
                     js.put("option2",option2);
                     js.put("option3",option3);
                     writeToFile(js, file);
-                    Intent toReviewAddedQuestionActivity = new Intent(AddQuestionActivity.this, ReviewAddedQuestion.class);
-                    startActivity(toReviewAddedQuestionActivity);
+                    Intent toHomeActivity = new Intent(AddQuestionActivity.this, HomeActivity.class);
+                    startActivity(toHomeActivity);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

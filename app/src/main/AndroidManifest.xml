@@ -15,9 +15,6 @@
         android:theme="@style/Theme.Whizz"
         tools:targetApi="31">
         <activity
-            android:name=".ReviewAddedQuestion"
-            android:exported="false" />
-        <activity
             android:name=".AddQuestionActivity"
             android:exported="false" />
         <activity
