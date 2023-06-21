@@ -15,7 +15,7 @@ import android.widget.Switch;
 import services.BackgroundMusicService;
 
 public class SettingActivity extends AppCompatActivity {
-    Boolean isPlaying = false;
+    public static Boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

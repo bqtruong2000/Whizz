@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     public static String userName;
+
     boolean isFirst = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
