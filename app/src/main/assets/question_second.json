@@ -1,0 +1,143 @@
+[
+  {
+    "question": "What is the full form of DBMS ?",
+    "answer": "Database Management System",
+    "option1": "Data of Binary Management System",
+    "option2": "Database Management Service",
+    "option3": "Data Backup Management System"
+  },
+  {
+    "question": "What is a database?",
+    "answer": "Organized collection of data or information that can be accessed, updated, and managed",
+    "option1": "Organized collection of information that cannot be accessed, updated, and managed",
+    "option2": "Collection of data or information without organizing",
+    "option3": "Organized collection of data that cannot be updated"
+  },
+  {
+    "question": "What is DBMS?",
+    "answer": "DBMS stores, modifies and retrieves data",
+    "option1": "DBMS is a collection of queries",
+    "option2": "DBMS is a collection of queries",
+    "option3": "DBMS is a programming language"
+  },
+  {
+    "question": "Who created the first DBMS?",
+    "answer": "Charles Bachman",
+    "option1": "Edgar Frank Codd",
+    "option2": "Charles Babbage",
+    "option3": "Sharon B. Codd"
+  },
+  {
+    "question": "Which type of data can be stored in the database?",
+    "answer": "All are correct",
+    "option1": "Image oriented data",
+    "option2": "Text, files containing data",
+    "option3": "Data in the form of audio or video"
+  },
+  {
+    "question": "In which of the following formats data is stored in the database management system?",
+    "answer": "Table",
+    "option1": "Image",
+    "option2": "Text",
+    "option3": "Graph"
+  },
+  {
+    "question": "Which of the following is not a type of database?",
+    "answer": "Decentralized",
+    "option1": "Hierarchical",
+    "option2": "Network",
+    "option3": "Distributed"
+  },
+  {
+    "question": "Which of the following is not an example of DBMS?",
+    "answer": "Google",
+    "option1": "MySQL",
+    "option2": "Microsoft Access",
+    "option3": "IBM DB2"
+  },
+  {
+    "question": "Which of the following is a feature of DBMS?",
+    "answer": "Single-user Access only",
+    "option1": "Minimum Duplication and Redundancy of Data",
+    "option2": "High Level of Security",
+    "option3": "Support ACID Property"
+  },
+  {
+    "question": "Which of the following is a feature of the database?",
+    "answer": "User interface provided",
+    "option1": "No-backup for the data stored",
+    "option2": "Lack of Authentication",
+    "option3": "Store data in multiple locations"
+  },
+  {
+    "question": "In a relational database, each table represents a separate entity or concept.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A foreign key is used to establish a relationship between two tables in a relational database.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Normalization is the process of organizing data into tables and defining relationships between those tables.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A database index is a data structure that improves the speed of data retrieval operations on a database table.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "In a relational database, a view is a virtual table that is derived from the data in one or more tables.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "NoSQL databases are based on the relational data model and use SQL for querying data.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Data redundancy is beneficial in a database system as it improves data availability and reliability.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "ACID stands for Atomicity, Consistency, Isolation, and Durability, which are properties that ensure reliable processing of database transactions. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A stored procedure is a program or set of SQL statements that are stored in the database and can be executed repeatedly.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A database trigger is a type of stored procedure that is automatically executed in response to certain database events.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  }
+
+]

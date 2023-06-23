@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         Button question = (Button) findViewById(R.id.home_question1);
         Button question2 = (Button) findViewById(R.id.home_question2);
         Button question3 = (Button) findViewById(R.id.home_question3);
+        Button question4 = (Button) findViewById(R.id.home_question4);
 
         TextView nameOfUser = (TextView) findViewById(R.id.home_userName);
         displayUserName(MainActivity.userName,nameOfUser);
@@ -68,6 +69,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent toIntroductionActivity = new Intent(HomeActivity.this, ThirdIntroduction.class);
+                startActivity(toIntroductionActivity);
+            }
+        });
+
+        question4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, FourthIntroductionActivity.class);
                 startActivity(toIntroductionActivity);
             }
         });

@@ -15,13 +15,13 @@ public class ThirdIntroduction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_introduction);
 
-        Button question = (Button) findViewById(R.id.startButton);
-        Button back = (Button) findViewById(R.id.previous);
+        Button question = (Button) findViewById(R.id.thirdIntroduction_startButton);
+        Button back = (Button) findViewById(R.id.thirdIntroduction_back);
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toQuestionActivity = new Intent(ThirdIntroduction.this, QuestionActivity.class);
+                Intent toQuestionActivity = new Intent(ThirdIntroduction.this, ThirdQuestionActivity.class);
                 startActivity(toQuestionActivity);
             }
         });

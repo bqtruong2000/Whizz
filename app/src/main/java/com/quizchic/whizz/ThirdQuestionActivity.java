@@ -1,23 +1,17 @@
 package com.quizchic.whizz;
 
-import static java.lang.Math.random;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,10 +20,9 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
+public class ThirdQuestionActivity extends AppCompatActivity implements View.OnClickListener{
 
-public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
     int score = 0,scoreOfAnAnswer = 50;
     int correctAnswers = 0, incorrectAnswers = 0, outOfTimeAnswers = 0 ;
@@ -53,10 +46,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question);
+        setContentView(R.layout.activity_third_question);
+
         choosenQuestions.clear();
         if(occurActivityTimes%2 == 0) {
-            String json = getJson("question.json");
+            String json = getJson("question_third.json");
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }
@@ -117,7 +111,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         submitBtn.setOnClickListener(this);
     }
 
-     public void shuffleAns(int index, Question question){
+    public void shuffleAns(int index, Question question){
         ArrayList<String> answers = new ArrayList<>();
 
         answers.add(question.getAnswer());
@@ -129,15 +123,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         for(int i = 0; i < 4; i++){
             answersShuffled[index][i] = answers.get(i);
         }
-     }
+    }
 
-     public int isTFQuestion(Question question){
+    public int isTFQuestion(Question question){
         String answer =question.getAnswer().toString().trim();
         if(answer.equals("True") ||answer.equals("False")){
             return 1;
         }
         return 0;
-     }
+    }
 
     public void loadQuestions(int index){
         ansA_Btn.setVisibility(View.VISIBLE);
@@ -206,14 +200,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 seca.start();
             } else{
                 if(selectedAnswer != null)
-                incorrectAnswers++;
+                    incorrectAnswers++;
                 swca.start();
             }
             selectedAnswer = null;
             questionIndex++;
             if (questionIndex >= totalQuestions){
                 countDownTimer.cancel();
-                Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
+                Intent toFinishQuizActivity = new Intent(ThirdQuestionActivity.this,ThirdFinishQuizActivity.class);
                 toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
                 toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
                 toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
@@ -253,7 +247,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     questionScore.setText("Score: "+score );
                     correctAnswers++;
                 } else if(selectedAnswer != null){
-                        incorrectAnswers++;
+                    incorrectAnswers++;
                 }
                 else{
                     outOfTimeAnswers ++;
@@ -261,7 +255,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 selectedAnswer = null;
                 questionIndex++;
                 if (questionIndex >= totalQuestions){
-                    Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
+                    Intent toFinishQuizActivity = new Intent(ThirdQuestionActivity.this,ThirdFinishQuizActivity.class);
                     toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
                     toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
                     toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
