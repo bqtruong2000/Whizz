@@ -24,6 +24,7 @@ public class FristIntroductionActivity extends AppCompatActivity {
                 Intent toQuestionActivity = new Intent(FristIntroductionActivity.this, QuestionActivity.class);
                 QuestionActivity.choosenSubject = "question.json";
                 QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
                 startActivity(toQuestionActivity);
             }
         });
