@@ -197,11 +197,15 @@ public class SecondQuestionActivity extends AppCompatActivity implements View.On
                 score+=scoreOfAnAnswer;
                 questionScore.setText("Score: "+score );
                 correctAnswers++;
-                seca.start();
+                if(SettingActivity.isPlaySE){
+                    seca.start();
+                }
             } else{
                 if(selectedAnswer != null)
                     incorrectAnswers++;
-                swca.start();
+                if(SettingActivity.isPlaySE){
+                    swca.start();
+                }
             }
             selectedAnswer = null;
             questionIndex++;
