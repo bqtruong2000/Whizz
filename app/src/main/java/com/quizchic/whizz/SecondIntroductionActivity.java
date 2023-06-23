@@ -23,6 +23,7 @@ public class SecondIntroductionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(SecondIntroductionActivity.this, QuestionActivity.class);
                 QuestionActivity.choosenSubject = "question_second.json";
+                QuestionActivity.occurActivityTimes = 0;
                 startActivity(toQuestionActivity);
             }
         });

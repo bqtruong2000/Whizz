@@ -23,6 +23,7 @@ public class ThirdIntroduction extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(ThirdIntroduction.this, QuestionActivity.class);
                 QuestionActivity.choosenSubject = "question_third.json";
+                QuestionActivity.occurActivityTimes = 0;
                 startActivity(toQuestionActivity);
             }
         });

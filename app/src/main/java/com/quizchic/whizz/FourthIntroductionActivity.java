@@ -22,6 +22,7 @@ public class FourthIntroductionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(FourthIntroductionActivity.this, QuestionActivity.class);
                 QuestionActivity.choosenSubject="question_fourth.json";
+                QuestionActivity.occurActivityTimes = 0;
                 startActivity(toQuestionActivity);
             }
         });
