@@ -15,14 +15,14 @@ public class FristIntroductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frist_introduction);
 
-        Button question = (Button) findViewById(R.id.startButton);
-        Button back = (Button) findViewById(R.id.previous);
+        Button question = (Button) findViewById(R.id.firstIntroduction_startButton);
+        Button back = (Button) findViewById(R.id.firstIntroduction_back);
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(FristIntroductionActivity.this, QuestionActivity.class);
-                QuestionActivity.choosenSubject = "OOP.json";
+                QuestionActivity.choosenSubject = "question.json";
                 startActivity(toQuestionActivity);
             }
         });

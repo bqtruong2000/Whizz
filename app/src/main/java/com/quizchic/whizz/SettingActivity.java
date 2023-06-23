@@ -16,6 +16,8 @@ import services.BackgroundMusicService;
 
 public class SettingActivity extends AppCompatActivity {
     public static Boolean isPlaying = false;
+
+    public static Boolean isPlaySE =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +27,12 @@ public class SettingActivity extends AppCompatActivity {
         ImageButton add = (ImageButton) findViewById(R.id.add);
 
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
-        //Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
-        //boolean isEnabled;
-        final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        //boolean isAnswerEnabled;
 
-//        soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
-//        soundBackGround.setLooping(true);
-        //isEnabled = sharedPreferences.getBoolean("isEnabled", false);
-        sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabled", false));
+        Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
+        final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
+        sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
+        final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
+        se_switch.setChecked(sharedPreferencesSe.getBoolean("isEnabled", false));
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,34 +61,34 @@ public class SettingActivity extends AppCompatActivity {
         sbg_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferences.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferencesSbg.edit().putBoolean("isEnabled", isChecked).apply();
                 if (isChecked) {
                    if (!isPlaying) {
-//                        soundBackGround.start();
-//                        soundBackGround.setLooping(true);
                        startService(new Intent(SettingActivity.this, BackgroundMusicService.class));
                        isPlaying= true;
                     }
                 } else {
                     if (isPlaying) {
-//                        soundBackGround.pause();
                         stopService(new Intent(SettingActivity.this, BackgroundMusicService.class));
                         isPlaying = false;
                     }
                 }
             }
         });
-
-        /*isAnswerEnabled = sharedPreferences.getBoolean("isAnswerEnabled", false);
-        se_switch.setChecked(isAnswerEnabled);
         se_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferences.edit().putBoolean("isAnswerEnabled", isChecked).apply();
+                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                if (isChecked) {
+                    if (!isPlaySE) {
+                        isPlaySE= true;
+                    }
+                } else {
+                    if (isPlaySE) {
+                        isPlaySE = false;
+                    }
+                }
             }
-        });*/
-
-
-
+        });
     }
 }

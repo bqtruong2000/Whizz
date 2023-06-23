@@ -15,14 +15,14 @@ public class SecondIntroductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_introduction);
 
-        Button question = (Button) findViewById(R.id.startButton);
-        Button back = (Button) findViewById(R.id.previous);
+        Button question = (Button) findViewById(R.id.secondIntroduction_startButton);
+        Button back = (Button) findViewById(R.id.secondIntroduction_back);
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(SecondIntroductionActivity.this, QuestionActivity.class);
-                QuestionActivity.choosenSubject = "DF.json";
+                QuestionActivity.choosenSubject = "question_second.json";
                 startActivity(toQuestionActivity);
             }
         });

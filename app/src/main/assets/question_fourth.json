@@ -1,0 +1,143 @@
+[
+  {
+    "question": "What is an operating system?",
+    "answer": "All of the mentioned",
+    "option1": "Interface between the hardware and application programs",
+    "option2": "Collection of programs that manages hardware resources",
+    "option3": "System service provider to the application programs"
+  },
+  {
+    "question": "What is the main function of the command interpreter?",
+    "answer": "To get and execute the next user-specified command",
+    "option1": "To provide the interface between the API and application program",
+    "option2": "To handle the files in the operating system",
+    "option3": "None of the mentioned"
+  },
+  {
+    "question": "In Operating Systems, which of the following is/are CPU scheduling algorithms?",
+    "answer": "All of the mentioned",
+    "option1": "Priority",
+    "option2": "Round Robin",
+    "option3": "Shortest Job First"
+  },
+  {
+    "question": "To access the services of the operating system, the interface is provided by the ___________",
+    "answer": "System calls",
+    "option1": "Library",
+    "option2": "Assembly instructions",
+    "option3": "API"
+  },
+  {
+    "question": "CPU scheduling is the basis of ___________",
+    "answer": "Multiprogramming operating systems",
+    "option1": "Larger memory sized systems",
+    "option2": "Multiprocessor systems",
+    "option3": "None of the mentioned"
+  },
+  {
+    "question": "Which one of the following is not true?",
+    "answer": "Kernel is made of various modules which can not be loaded in running operating system",
+    "option1": "Kernel remains in the memory during the entire computer session",
+    "option2": "Kernel is the first part of the operating system to load into memory during booting",
+    "option3": "Kernel is the program that constitutes the central core of the operating system"
+  },
+  {
+    "question": "Which one of the following errors will be handle by the operating system?",
+    "answer": "All of the mentioned",
+    "option1": "Lack of paper in printer",
+    "option2": "Connection failure in the network",
+    "option3": "Power failure"
+  },
+  {
+    "question": "Where is the operating system placed in the memory?",
+    "answer": "Either low or high memory (depending on the location of interrupt vector)",
+    "option1": "In the low memory",
+    "option2": "In the high memory",
+    "option3": "None of the mentioned"
+  },
+  {
+    "question": "If a process fails, most operating system write the error information to a ______",
+    "answer": "Log file",
+    "option1": "New file",
+    "option2": "Another running process",
+    "option3": "None of the mentioned"
+  },
+  {
+    "question": "Which one of the following is not a real time operating system?",
+    "answer": "Palm OS",
+    "option1": "RTLinux",
+    "option2": "QNX",
+    "option3": "VxWorks"
+  },
+  {
+    "question": "The commutative property states that the order of operands does not affect the result of an operation.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Division by zero is always defined and results in a finite value. ",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "The associative property states that the grouping of operands does not affect the result of an operation.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "In computer programming, the modulus operator (%) is used to perform integer division.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Exponentiation is the process of finding the square root of a number.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Addition and subtraction are examples of binary operations.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Bitwise operations are commonly used in computer systems to manipulate individual bits in binary data.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "The distributive property states that multiplication distributes over addition and subtraction.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "In mathematics, the factorial of a non-negative integer is defined as the product of all positive integers less than or equal to that integer.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "The order of operations, also known as PEMDAS, dictates the sequence in which mathematical operations should be performed.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  }
+
+]

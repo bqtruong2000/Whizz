@@ -43,7 +43,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     String ans;
     ArrayList<Integer> indexList = new ArrayList<Integer>();
 
-    static ArrayList questions = new ArrayList<Question>();
+    public static ArrayList questions = new ArrayList<Question>();
     public static ArrayList choosenQuestions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
 
@@ -55,19 +55,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
-
-
-
         choosenQuestions.clear();
-        if(occurActivityTimes%1 == 0) {
+        if(occurActivityTimes%4 == 0) {
             String json = getJson(choosenSubject);
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }
         occurActivityTimes++;
         totalQuestions = 5;
-
         init();
         loadQuestions(questionIndex);
     }
@@ -87,7 +82,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         return json;
     }
     public void convertJsonToQuestions(String json){
-
         try {
             JSONArray jsonArr = new JSONArray(json);
             int size = jsonArr.length();
@@ -110,6 +104,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         questionScore = findViewById(R.id.question_score);
         questionTextView= findViewById(R.id.question_displayPlace);
         questionTimer = findViewById(R.id.question_timer);
+
         ansA_Btn= findViewById(R.id.question_answer1);
         ansB_Btn= findViewById(R.id.question_answer2);
         ansC_Btn= findViewById(R.id.question_answer3);
@@ -125,6 +120,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
      public void shuffleAns(int index, Question question){
         ArrayList<String> answers = new ArrayList<>();
+
         answers.add(question.getAnswer());
         answers.add(question.getOption1());
         answers.add(question.getOption2());
@@ -149,8 +145,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansB_Btn.setVisibility(View.VISIBLE);
         ansC_Btn.setVisibility(View.VISIBLE);
         ansD_Btn.setVisibility(View.VISIBLE);
-        countTimer();
 
+        countTimer();
 
         questionScore.setText("     Score: "+score + " (" + (questionIndex+1) + "/" + totalQuestions +")");
         Question question = (Question) questions.get(0);
@@ -195,7 +191,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         MediaPlayer seca= MediaPlayer.create(this,R.raw.soundcorrectanswer);
         MediaPlayer swca= MediaPlayer.create(this,R.raw.soundwronganswer);
+
         Button clickedButton = (Button) view;
+
         ansA_Btn.setBackgroundColor(733757);
         ansB_Btn.setBackgroundColor(733757);
         ansC_Btn.setBackgroundColor(733757);
@@ -206,11 +204,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 score+=scoreOfAnAnswer;
                 questionScore.setText("Score: "+score );
                 correctAnswers++;
-                seca.start();
+                if(SettingActivity.isPlaySE){
+                    seca.start();
+                }
             } else{
                 if(selectedAnswer != null)
                 incorrectAnswers++;
-                swca.start();
+                if(SettingActivity.isPlaySE){
+                    swca.start();
+                }
             }
             selectedAnswer = null;
             questionIndex++;
@@ -239,11 +241,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-
         countDownTimer = new CountDownTimer(60000,1000) {
-
-
-
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -288,6 +286,4 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         };
         countDownTimer.start();
     }
-
-
 }

@@ -91,7 +91,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        />
 
     <Button
         android:id="@+id/startButton"
@@ -99,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="140dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="570dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"

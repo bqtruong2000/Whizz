@@ -6,30 +6,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class ThirdIntroduction extends AppCompatActivity {
+public class FourthIntroductionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third_introduction);
+        setContentView(R.layout.activity_fourth_introduction);
 
-        Button question = (Button) findViewById(R.id.thirdIntroduction_startButton);
-        Button back = (Button) findViewById(R.id.thirdIntroduction_back);
+        Button question = (Button) findViewById(R.id.fourthIntroduction_startButton);
+        Button back = (Button) findViewById(R.id.fourthIntroduction_back);
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toQuestionActivity = new Intent(ThirdIntroduction.this, QuestionActivity.class);
-                QuestionActivity.choosenSubject = "question_third.json";
+                Intent toQuestionActivity = new Intent(FourthIntroductionActivity.this, QuestionActivity.class);
+                QuestionActivity.choosenSubject="question_fourth.json";
                 startActivity(toQuestionActivity);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toHomeActivity = new Intent(ThirdIntroduction.this, HomeActivity.class);
+                Intent toHomeActivity = new Intent(FourthIntroductionActivity.this, HomeActivity.class);
                 startActivity(toHomeActivity);
             }
         });

@@ -1,0 +1,143 @@
+[
+  {
+    "question": "Who is the father of Computers?",
+    "answer": "Charles Babbage",
+    "option1": "James Gosling",
+    "option2": "Dennis Ritchie",
+    "option3": "Bjarne Stroustrup"
+  },
+  {
+    "question": "Which of the following is the correct abbreviation of COMPUTER?",
+    "answer": "Commonly Operated Machines Used in Technical and Educational Research",
+    "option1": "Commonly Occupied Machines Used in Technical and Educational Research",
+    "option2": "Commonly Operated Machines Used in Technical and Environmental Research",
+    "option3": "Commonly Oriented Machines Used in Technical and Educational Research"
+  },
+  {
+    "question": "Which of the following is the correct definition of Computer?",
+    "answer": "All of the mentioned",
+    "option1": "Computer is a machine or device that can be programmed to perform arithmetical or logic operation sequences automatically",
+    "option2": "Computer understands only binary language which is written in the form of 0s & 1s",
+    "option3": "Computer is a programmable electronic device that stores, retrieves, and processes the data"
+  },
+  {
+    "question": "What is the full form of CPU?",
+    "answer": "Central Processing Unit",
+    "option1": "Computer Processing Unit",
+    "option2": "Computer Principle Unit",
+    "option3": "Control Processing Unit"
+  },
+  {
+    "question": "Which of the following language does the computer understand?",
+    "answer": "Computer understands only Binary Language",
+    "option1": "Computer understands only C Language",
+    "option2": "Computer understands only Assembly Language",
+    "option3": "Computer understands only BASIC"
+  },
+  {
+    "question": "Which of the following computer language is written in binary codes only?",
+    "answer": "Machine language",
+    "option1": "Pascal",
+    "option2": "C",
+    "option3": "C#"
+  },
+  {
+    "question": "Which of the following is the brain of the computer?",
+    "answer": "Central Processing Unit",
+    "option1": "Memory",
+    "option2": "Arithmetic and Logic unit",
+    "option3": "Control unit"
+  },
+  {
+    "question": "Which of the following is not a characteristic of a computer?",
+    "answer": "I.Q",
+    "option1": "Versatility",
+    "option2": "Accuracy",
+    "option3": "Diligence"
+  },
+  {
+    "question": "Which of the following is the smallest unit of data in a computer?",
+    "answer": "Bit",
+    "option1": "KB",
+    "option2": "Nibble",
+    "option3": "Byte"
+  },
+  {
+    "question": "Which of the following unit is responsible for converting the data received from the user into a computer understandable format?",
+    "answer": "Input Unit",
+    "option1": "Output Unit",
+    "option2": "Memory Unit",
+    "option3": "Arithmetic & Logic Unit"
+  },
+  {
+    "question": "The CPU (Central Processing Unit) is responsible for executing instructions and performing calculations in a computer system.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "RAM (Random Access Memory) is a type of non-volatile storage used for long-term data storage.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "An operating system is software that manages computer hardware and provides a user interface for interacting with the computer.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A compiler translates high-level programming code into machine code that can be directly executed by the computer's hardware.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A computer's hard drive is an example of volatile memory, meaning its contents are lost when the power is turned off.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Binary code consists of combinations of 0s and 1s that represent instructions and data in a computer system.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "USB (Universal Serial Bus) is a type of hardware interface used for connecting peripheral devices to a computer.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "A firewall is a hardware device used to provide power backup and protect a computer system from electrical fluctuations.",
+    "answer": "False",
+    "option1": "True",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "An SSD (Solid-State Drive) is a type of storage device that uses flash memory to store data persistently.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Ethernet is a widely used standard for connecting computers and other devices in a local area network (LAN).",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  }
+
+]

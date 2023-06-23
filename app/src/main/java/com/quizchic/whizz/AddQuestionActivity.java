@@ -22,7 +22,10 @@ import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,24 +56,24 @@ public class AddQuestionActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getQuestion = questionInput.getText().toString(); //question
-                String getAnswer = answerInput.getText().toString(); //answer
-                String getOption1 = option1Input.getText().toString(); //opt1
-                String getOption2 = option2Input.getText().toString(); //
-                String getOption3 = option3Input.getText().toString();
 
+
+                String question = questionInput.getText().toString();
+                String answer = answerInput.getText().toString();
+                String option1 = option1Input.getText().toString();
+                String option2 = option2Input.getText().toString();
+                String option3 = option3Input.getText().toString();
 
                 File file = new File(getExternalFilesDir(null), "question.txt");
                 JSONObject js = new JSONObject();
 
                 try {
-
-                    js.put("question",getQuestion);
-                    js.put("answer",getAnswer);
-                    js.put("option1",getOption1);
-                    js.put("option2",getOption2);
-                    js.put("option3",getOption3);
-                    writeToFile(js, file); //jsObj
+                    js.put("question",question);
+                    js.put("answer",answer);
+                    js.put("option1",option1);
+                    js.put("option2",option2);
+                    js.put("option3",option3);
+                    writeToFile(js, file);
                     Intent toHomeActivity = new Intent(AddQuestionActivity.this, HomeActivity.class);
                     Context context = getApplicationContext();
                     CharSequence text = "SUCCESSFULLY INSERT!";
@@ -121,7 +124,6 @@ public class AddQuestionActivity extends AppCompatActivity {
     }
 
     public void writeToFile(JSONObject js, File file) {
-        // add-write text into file
         try {
             FileWriter fileWriter = new FileWriter(file,true);
             fileWriter.write(js.toString() + "\n");
@@ -130,5 +132,6 @@ public class AddQuestionActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
 }
