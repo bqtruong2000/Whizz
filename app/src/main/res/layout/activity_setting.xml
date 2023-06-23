@@ -86,7 +86,8 @@
         android:text="Sound Background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <Switch
         android:id="@+id/switch_sound2"
@@ -97,6 +98,7 @@
         android:layout_marginTop="372dp"
         android:text="Sound Effect"
         tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="217dp"/>
+        tools:layout_editor_absoluteY="217dp"
+        />
 
 </RelativeLayout>

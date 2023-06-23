@@ -15,7 +15,7 @@ import android.widget.Switch;
 import services.BackgroundMusicService;
 
 public class SettingActivity extends AppCompatActivity {
-    Boolean isPlaying = false;
+    public static Boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +30,8 @@ public class SettingActivity extends AppCompatActivity {
         final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         //boolean isAnswerEnabled;
 
-        //MediaPlayer soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
-        //soundBackGround.setLooping(true);
+//        soundBackGround = MediaPlayer.create(SettingActivity.this, R.raw.soundbackground);
+//        soundBackGround.setLooping(true);
         //isEnabled = sharedPreferences.getBoolean("isEnabled", false);
         sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabled", false));
 
@@ -65,14 +65,14 @@ public class SettingActivity extends AppCompatActivity {
                 sharedPreferences.edit().putBoolean("isEnabled", isChecked).apply();
                 if (isChecked) {
                    if (!isPlaying) {
-                       /* soundBackGround.start();
-                        soundBackGround.setLooping(true);*/
+//                        soundBackGround.start();
+//                        soundBackGround.setLooping(true);
                        startService(new Intent(SettingActivity.this, BackgroundMusicService.class));
                        isPlaying= true;
                     }
                 } else {
                     if (isPlaying) {
-                        //soundBackGround.pause();
+//                        soundBackGround.pause();
                         stopService(new Intent(SettingActivity.this, BackgroundMusicService.class));
                         isPlaying = false;
                     }

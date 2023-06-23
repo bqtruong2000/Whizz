@@ -30,6 +30,7 @@ import java.util.Random;
 
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
+    public static String choosenSubject;
     int questionIndex = 0;
     int score = 0,scoreOfAnAnswer = 50;
     int correctAnswers = 0, incorrectAnswers = 0, outOfTimeAnswers = 0 ;
@@ -59,8 +60,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
 
         choosenQuestions.clear();
-        if(occurActivityTimes%2 == 0) {
-            String json = getJson("question.json");
+        if(occurActivityTimes%4 == 0) {
+            String json = getJson(choosenSubject);
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }

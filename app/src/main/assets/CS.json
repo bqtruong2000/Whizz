@@ -1,0 +1,37 @@
+[
+  {
+    "question": "In object-oriented programming, objects are instances of classes.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Encapsulation is a principle that combines data and methods into a single unit called an object.",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Inheritance allows a class to inherit properties and methods from another class",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Polymorphism refers to the ability of an object to take on many forms and respond differently based on the context. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  },
+  {
+    "question": "Abstraction is the process of hiding complex implementation details and exposing only essential features to the user. ",
+    "answer": "True",
+    "option1": "False",
+    "option2": "TFNULL",
+    "option3": "TFNULL"
+  }
+]
