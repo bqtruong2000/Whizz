@@ -60,7 +60,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
 
         choosenQuestions.clear();
-        if(occurActivityTimes%4 == 0) {
+        if(occurActivityTimes%1 == 0) {
             String json = getJson(choosenSubject);
             convertJsonToQuestions(json);
             Collections.shuffle(questions);

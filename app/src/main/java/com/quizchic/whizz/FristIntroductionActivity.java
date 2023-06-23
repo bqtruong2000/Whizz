@@ -22,6 +22,7 @@ public class FristIntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(FristIntroductionActivity.this, QuestionActivity.class);
+                QuestionActivity.choosenSubject = "OOP.json";
                 startActivity(toQuestionActivity);
             }
         });

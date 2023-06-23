@@ -22,6 +22,7 @@ public class SecondIntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(SecondIntroductionActivity.this, QuestionActivity.class);
+                QuestionActivity.choosenSubject = "DF.json";
                 startActivity(toQuestionActivity);
             }
         });
