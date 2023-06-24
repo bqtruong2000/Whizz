@@ -36,7 +36,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     int correctAnswers = 0, incorrectAnswers = 0, outOfTimeAnswers = 0 ;
     int totalQuestions;
 
-    public static String[][] answersShuffled = new String[10][4];
+    public static String[][] answersShuffled = new String[20][4];
     TextView questionTextView,questionScore, questionTimer;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
