@@ -1,33 +1,23 @@
 package com.quizchic.whizz;
 
-import static java.lang.Math.random;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     public static String choosenSubject;
@@ -41,11 +31,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
     String ans;
-    ArrayList<Integer> indexList = new ArrayList<Integer>();
 
     public static ArrayList questions = new ArrayList<Question>();
     public static ArrayList choosenQuestions = new ArrayList<Question>();
-    ArrayList<String> selectedAns = new ArrayList<String>();
+    ArrayList<String> selectedAns = new ArrayList<>();
 
     public static int occurActivityTimes = 0;
 
@@ -133,7 +122,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
      }
 
      public int isTFQuestion(Question question){
-        String answer =question.getAnswer().toString().trim();
+        String answer =question.getAnswer().trim();
         if(answer.equals("True") ||answer.equals("False")){
             return 1;
         }

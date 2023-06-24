@@ -1,14 +1,12 @@
 package com.quizchic.whizz;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     public static String userName;
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         EditText placeHolder = findViewById(R.id.placeHolder);
         Button startButton = findViewById(R.id.startButton);
         MediaPlayer soundButton = MediaPlayer.create(this, R.raw.ring);
-
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
