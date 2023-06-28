@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void displayUserName(String name, TextView nameOfUser){
-        String nullName = "Hello User";
+        String nullName = "Hello IT-Whizz";
         if(name.equalsIgnoreCase("") == false ){
             nameOfUser.append("Hello " + name);
         }

@@ -230,7 +230,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-        countDownTimer = new CountDownTimer(60000,1000) {
+        countDownTimer = new CountDownTimer(5000,1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
