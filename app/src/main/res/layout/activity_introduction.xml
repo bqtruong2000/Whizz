@@ -10,17 +10,17 @@
 
 
     <Button
-        android:id="@+id/firstIntroduction_back"
+        android:id="@+id/Introduction_back"
         android:layout_width="49dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="115dp"
         android:background="@drawable/back" />
 
     <TextView
-        android:id="@+id/firstIntroduction_courseName"
+        android:id="@+id/Introduction_courseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -31,35 +31,34 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/firstIntroduction_introduction"
-        android:layout_width="wrap_content"
-        android:layout_height="396dp"
+        android:id="@+id/Introduction_introduction"
+        android:layout_width="371dp"
+        android:layout_height="424dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="140dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/whiterectangle"
         android:backgroundTint="#C9FEFB"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
         android:padding="20dp"
-        android:text="Object-oriented programming (OOP) is a computer programming model that organizes software design around data, or objects, rather than functions and logic. An object can be defined as a data field that has unique attributes and behavior."
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/firstIntroduction_startButton"
+        android:id="@+id/Introduction_startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="550dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="96dp"
         android:backgroundTint="@color/black"
         android:text="START"
         android:textAlignment="center"

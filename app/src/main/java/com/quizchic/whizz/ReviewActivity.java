@@ -1,5 +1,7 @@
 package com.quizchic.whizz;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
 
-    ArrayList<Question> questions = QuestionActivity.choosenQuestions;
+    ArrayList<Question> questions = QuestionActivity.chosenQuestions;
     int totalQuestions = 5;
 
     TextView questionTextView,questionScore;
@@ -87,14 +89,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         rightAnswer = question.getAnswer();
         questionTextView.setText((index +1) + "." + question.getQuestion());
         ansA_Btn.setText(answersShuffled[index][0]);
-        if(ansA_Btn.getText().toString().equals("TFNULL")){
-            ansA_Btn.setVisibility(View.INVISIBLE);
-        }
-
         ansB_Btn.setText(answersShuffled[index][1]);
-        if(ansB_Btn.getText().toString().equals("TFNULL")){
-            ansB_Btn.setVisibility(View.INVISIBLE);
-        }
 
         ansC_Btn.setText(answersShuffled[index][2]);
         if(ansC_Btn.getText().toString().equals("TFNULL")){
@@ -127,9 +122,9 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         loadCheck();
     }
     public void loadCheck(){
-        if(checkSelectedAnsver() != 0){
-            selectedBtn = findViewById(checkSelectedAnsver());
-            if(selectedBtn.getText().equals(rightAnswer)){
+        if(checkSelectedAnswer() != 0){
+            selectedBtn = findViewById(checkSelectedAnswer());
+            if(selectedBtn.getText() != null && selectedBtn.getText().equals(rightAnswer)){
                 selectedBtn.setBackgroundColor(Color.GREEN);
             } else {
                 selectedBtn.setBackgroundColor(Color.RED);
@@ -140,7 +135,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public int checkSelectedAnsver(){
+    public int checkSelectedAnswer(){
         idSelectedBtn = 0;
         if (ansA_Btn.getText().equals(selectedAns.get(questionIndex)))
             idSelectedBtn = ansA_Btn.getId();
@@ -154,13 +149,13 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void checkRightAnswer(){
-        if (ansA_Btn.getText() == rightAnswer)
+        if (ansA_Btn.getText() != null && ansA_Btn.getText().equals(rightAnswer))
             ansA_Btn.setBackgroundColor(Color.GREEN);
-        if (ansB_Btn.getText() == rightAnswer)
+        if (ansB_Btn.getText() != null && ansB_Btn.getText().equals(rightAnswer))
             ansB_Btn.setBackgroundColor(Color.GREEN);
-        if (ansC_Btn.getText() == rightAnswer)
+        if (ansC_Btn.getText() != null && ansC_Btn.getText().equals(rightAnswer))
             ansC_Btn.setBackgroundColor(Color.GREEN);
-        if (ansD_Btn.getText() == rightAnswer)
+        if (ansD_Btn.getText() != null && ansC_Btn.getText().equals(rightAnswer))
             ansD_Btn.setBackgroundColor(Color.GREEN);
     }
 

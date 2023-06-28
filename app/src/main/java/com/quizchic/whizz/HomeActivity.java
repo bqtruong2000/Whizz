@@ -54,21 +54,30 @@ public class HomeActivity extends AppCompatActivity {
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, FristIntroductionActivity.class);
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                QuestionActivity.chosenSubject = "question.json";
+                QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
         });
         question2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, SecondIntroductionActivity.class);
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                QuestionActivity.chosenSubject = "question_second.json";
+                QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
         });
         question3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, ThirdIntroduction.class);
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                QuestionActivity.chosenSubject = "question_third.json";
+                QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
         });
@@ -76,7 +85,10 @@ public class HomeActivity extends AppCompatActivity {
         question4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, FourthIntroductionActivity.class);
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                QuestionActivity.chosenSubject="question_fourth.json";
+                QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
         });

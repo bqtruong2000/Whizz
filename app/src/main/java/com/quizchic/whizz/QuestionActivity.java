@@ -1,5 +1,6 @@
 package com.quizchic.whizz;
 
+import static android.content.ContentValues.TAG;
 import static java.lang.Math.random;
 
 import androidx.appcompat.app.AlertDialog;
@@ -30,7 +31,7 @@ import java.util.Random;
 
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
-    public static String choosenSubject;
+    public static String chosenSubject;
     int questionIndex = 0;
     int score = 0,scoreOfAnAnswer = 50;
     int correctAnswers = 0, incorrectAnswers = 0, outOfTimeAnswers = 0 ;
@@ -44,7 +45,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     ArrayList<Integer> indexList = new ArrayList<Integer>();
 
     public static ArrayList questions = new ArrayList<Question>();
-    public static ArrayList choosenQuestions = new ArrayList<Question>();
+    public static ArrayList chosenQuestions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
 
     public static int occurActivityTimes = 0;
@@ -55,9 +56,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        choosenQuestions.clear();
+        chosenQuestions.clear();
         if(occurActivityTimes%4 == 0) {
-            String json = getJson(choosenSubject);
+            String json = getJson(chosenSubject);
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }
@@ -150,35 +151,23 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         questionScore.setText("     Score: "+score + " (" + (questionIndex+1) + "/" + totalQuestions +")");
         Question question = (Question) questions.get(0);
-        choosenQuestions.add(question);
+        chosenQuestions.add(question);
         questions.remove(0);
         rightAnswer = question.getAnswer();
+        Log.e(TAG,rightAnswer);
         questionTextView.setText((index+1)+"."+question.getQuestion());
 
-        shuffleAns(index,question);
         if(isTFQuestion(question) == 1){
-            for(int i = 0; i<4; i++){
-                if(!answersShuffled[index][i].equals("TFNULL")){
-                    ansA_Btn.setText(answersShuffled[index][i]);
-                    answersShuffled[index][0] = answersShuffled[index][i];
-                    if(i!=0){
-                        answersShuffled[index][i] = "TFNULL";
-                    }
-                    break;
-                }
-            }
-            for(int i = 1; i<4; i++){
-                if(!answersShuffled[index][i].equals("TFNULL")){
-                    ansB_Btn.setText(answersShuffled[index][i]);
-                    answersShuffled[index][1] = answersShuffled[index][i];
-                    answersShuffled[index][2] = "TFNULL";
-                    answersShuffled[index][3] = "TFNULL";
-                    break;
-                }
-            }
+            answersShuffled[index][0] = "True";
+            answersShuffled[index][1] = "False";
+            answersShuffled[index][2] = "TFNULL";
+            answersShuffled[index][3] = "TFNULL";
+            ansA_Btn.setText(answersShuffled[index][0]);
+            ansB_Btn.setText(answersShuffled[index][1]);
             ansC_Btn.setVisibility(View.INVISIBLE);
             ansD_Btn.setVisibility(View.INVISIBLE);
         }else {
+            shuffleAns(index,question);
             ansA_Btn.setText(answersShuffled[index][0]);
             ansB_Btn.setText(answersShuffled[index][1]);
             ansC_Btn.setText(answersShuffled[index][2]);
@@ -200,7 +189,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         ansD_Btn.setBackgroundColor(733757);
         if (clickedButton.getId() == R.id.question_submit){
             selectedAns.add(ans);
-            if (selectedAnswer == rightAnswer){
+            if (selectedAnswer != null && selectedAnswer.equals(rightAnswer)){
                 score+=scoreOfAnAnswer;
                 questionScore.setText("Score: "+score );
                 correctAnswers++;
