@@ -206,7 +206,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             selectedAnswer = null;
             questionIndex++;
             if (questionIndex >= totalQuestions){
-                countDownTimer.cancel();
+                if(SettingActivity.isStart) {
+                    countDownTimer.cancel();
+                }
                 Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
                 toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
                 toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
@@ -216,10 +218,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 toFinishQuizActivity.putExtra("outOfTimeAns",outOfTimeAnswers);
                 startActivity(toFinishQuizActivity);
             } else {
-                if (countDownTimer != null) {
-                    countDownTimer.cancel();
+                if(SettingActivity.isStart) {
+                    if (countDownTimer != null) {
+                        countDownTimer.cancel();
+                    }
                 }
-
                 loadQuestions(questionIndex);
             }
         } else{
@@ -230,49 +233,51 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-        countDownTimer = new CountDownTimer(60000,1000) {
+        if(SettingActivity.isStart) {
+            countDownTimer = new CountDownTimer(60000, 1000) {
 
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int seconds = (int) (millisUntilFinished / 1000) % 60;
-                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
-                questionTimer.setText(String.format("Time: "+"%02d:%02d", minutes,seconds));
-            }
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    int seconds = (int) (millisUntilFinished / 1000) % 60;
+                    int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
+                    questionTimer.setText(String.format("Time: " + "%02d:%02d", minutes, seconds));
+                }
 
-            @Override
-            public void onFinish() {
-                selectedAns.add(ans);
-                if (selectedAnswer == rightAnswer){
-                    score+=scoreOfAnAnswer;
-                    questionScore.setText("Score: "+score );
-                    correctAnswers++;
-                } else if(selectedAnswer != null){
+                @Override
+                public void onFinish() {
+                    selectedAns.add(ans);
+                    if (selectedAnswer == rightAnswer) {
+                        score += scoreOfAnAnswer;
+                        questionScore.setText("Score: " + score);
+                        correctAnswers++;
+                    } else if (selectedAnswer != null) {
                         incorrectAnswers++;
+                    } else {
+                        outOfTimeAnswers++;
+                    }
+                    selectedAnswer = null;
+                    questionIndex++;
+                    if (questionIndex >= totalQuestions) {
+                        Intent toFinishQuizActivity = new Intent(QuestionActivity.this, FinishQuizActivity.class);
+                        toFinishQuizActivity.putStringArrayListExtra("selectedAns", selectedAns);
+                        toFinishQuizActivity.putExtra("Score", questionScore.getText().toString().trim());
+                        toFinishQuizActivity.putExtra("incorrectAns", incorrectAnswers);
+                        toFinishQuizActivity.putExtra("correctAns", correctAnswers);
+                        toFinishQuizActivity.putExtra("totalQues", totalQuestions);
+                        toFinishQuizActivity.putExtra("outOfTimeAns", outOfTimeAnswers);
+                        startActivity(toFinishQuizActivity);
+                    } else {
+                        loadQuestions(questionIndex);
+                        ansA_Btn.setBackgroundColor(733757);
+                        ansB_Btn.setBackgroundColor(733757);
+                        ansC_Btn.setBackgroundColor(733757);
+                        ansD_Btn.setBackgroundColor(733757);
+                    }
                 }
-                else{
-                    outOfTimeAnswers ++;
-                }
-                selectedAnswer = null;
-                questionIndex++;
-                if (questionIndex >= totalQuestions){
-                    Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
-                    toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
-                    toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
-                    toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
-                    toFinishQuizActivity.putExtra("correctAns",correctAnswers);
-                    toFinishQuizActivity.putExtra("totalQues",totalQuestions);
-                    toFinishQuizActivity.putExtra("outOfTimeAns",outOfTimeAnswers);
-                    startActivity(toFinishQuizActivity);
-                }
-                else{
-                    loadQuestions(questionIndex);
-                    ansA_Btn.setBackgroundColor(733757);
-                    ansB_Btn.setBackgroundColor(733757);
-                    ansC_Btn.setBackgroundColor(733757);
-                    ansD_Btn.setBackgroundColor(733757);
-                }
-            }
-        };
-        countDownTimer.start();
+            };
+            countDownTimer.start();
+        } else {
+            questionTimer.setText(String.format("Time: " + "∞"));
+        }
     }
 }
