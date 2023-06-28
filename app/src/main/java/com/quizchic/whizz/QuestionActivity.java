@@ -1,34 +1,24 @@
 package com.quizchic.whizz;
 
-import static android.content.ContentValues.TAG;
-import static java.lang.Math.random;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     public static String chosenSubject;
@@ -42,11 +32,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, submitBtn;
     String selectedAnswer, rightAnswer;
     String ans;
-    ArrayList<Integer> indexList = new ArrayList<Integer>();
 
     public static ArrayList questions = new ArrayList<Question>();
+
     public static ArrayList chosenQuestions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
+
 
     public static int occurActivityTimes = 0;
 
@@ -134,7 +125,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
      }
 
      public int isTFQuestion(Question question){
-        String answer =question.getAnswer().toString().trim();
+        String answer =question.getAnswer().trim();
         if(answer.equals("True") ||answer.equals("False")){
             return 1;
         }
@@ -154,7 +145,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         chosenQuestions.add(question);
         questions.remove(0);
         rightAnswer = question.getAnswer();
-        Log.e(TAG,rightAnswer);
         questionTextView.setText((index+1)+"."+question.getQuestion());
 
         if(isTFQuestion(question) == 1){
@@ -206,7 +196,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             selectedAnswer = null;
             questionIndex++;
             if (questionIndex >= totalQuestions){
-                countDownTimer.cancel();
+                if(SettingActivity.isStart) {
+                    countDownTimer.cancel();
+                }
                 Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
                 toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
                 toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
@@ -216,10 +208,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 toFinishQuizActivity.putExtra("outOfTimeAns",outOfTimeAnswers);
                 startActivity(toFinishQuizActivity);
             } else {
-                if (countDownTimer != null) {
-                    countDownTimer.cancel();
+                if(SettingActivity.isStart) {
+                    if (countDownTimer != null) {
+                        countDownTimer.cancel();
+                    }
                 }
-
                 loadQuestions(questionIndex);
             }
         } else{
@@ -230,49 +223,51 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void countTimer(){
-        countDownTimer = new CountDownTimer(60000,1000) {
+        if(SettingActivity.isStart) {
+            countDownTimer = new CountDownTimer(60000, 1000) {
 
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int seconds = (int) (millisUntilFinished / 1000) % 60;
-                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
-                questionTimer.setText(String.format("Time: "+"%02d:%02d", minutes,seconds));
-            }
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    int seconds = (int) (millisUntilFinished / 1000) % 60;
+                    int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
+                    questionTimer.setText(String.format("Time: " + "%02d:%02d", minutes, seconds));
+                }
 
-            @Override
-            public void onFinish() {
-                selectedAns.add(ans);
-                if (selectedAnswer == rightAnswer){
-                    score+=scoreOfAnAnswer;
-                    questionScore.setText("Score: "+score );
-                    correctAnswers++;
-                } else if(selectedAnswer != null){
+                @Override
+                public void onFinish() {
+                    selectedAns.add(ans);
+                    if (selectedAnswer == rightAnswer) {
+                        score += scoreOfAnAnswer;
+                        questionScore.setText("Score: " + score);
+                        correctAnswers++;
+                    } else if (selectedAnswer != null) {
                         incorrectAnswers++;
+                    } else {
+                        outOfTimeAnswers++;
+                    }
+                    selectedAnswer = null;
+                    questionIndex++;
+                    if (questionIndex >= totalQuestions) {
+                        Intent toFinishQuizActivity = new Intent(QuestionActivity.this, FinishQuizActivity.class);
+                        toFinishQuizActivity.putStringArrayListExtra("selectedAns", selectedAns);
+                        toFinishQuizActivity.putExtra("Score", questionScore.getText().toString().trim());
+                        toFinishQuizActivity.putExtra("incorrectAns", incorrectAnswers);
+                        toFinishQuizActivity.putExtra("correctAns", correctAnswers);
+                        toFinishQuizActivity.putExtra("totalQues", totalQuestions);
+                        toFinishQuizActivity.putExtra("outOfTimeAns", outOfTimeAnswers);
+                        startActivity(toFinishQuizActivity);
+                    } else {
+                        loadQuestions(questionIndex);
+                        ansA_Btn.setBackgroundColor(733757);
+                        ansB_Btn.setBackgroundColor(733757);
+                        ansC_Btn.setBackgroundColor(733757);
+                        ansD_Btn.setBackgroundColor(733757);
+                    }
                 }
-                else{
-                    outOfTimeAnswers ++;
-                }
-                selectedAnswer = null;
-                questionIndex++;
-                if (questionIndex >= totalQuestions){
-                    Intent toFinishQuizActivity = new Intent(QuestionActivity.this,FinishQuizActivity.class);
-                    toFinishQuizActivity.putStringArrayListExtra("selectedAns",selectedAns);
-                    toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
-                    toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
-                    toFinishQuizActivity.putExtra("correctAns",correctAnswers);
-                    toFinishQuizActivity.putExtra("totalQues",totalQuestions);
-                    toFinishQuizActivity.putExtra("outOfTimeAns",outOfTimeAnswers);
-                    startActivity(toFinishQuizActivity);
-                }
-                else{
-                    loadQuestions(questionIndex);
-                    ansA_Btn.setBackgroundColor(733757);
-                    ansB_Btn.setBackgroundColor(733757);
-                    ansC_Btn.setBackgroundColor(733757);
-                    ansD_Btn.setBackgroundColor(733757);
-                }
-            }
-        };
-        countDownTimer.start();
+            };
+            countDownTimer.start();
+        } else {
+            questionTimer.setText(String.format("Time: " + "∞"));
+        }
     }
 }

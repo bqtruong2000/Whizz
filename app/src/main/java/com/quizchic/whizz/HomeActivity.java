@@ -3,11 +3,8 @@ package com.quizchic.whizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.transition.TransitionManager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton setting = (ImageButton) findViewById(R.id.settings);
         ImageButton add = (ImageButton) findViewById(R.id.add);
         ImageButton user = (ImageButton) findViewById(R.id.user);
+
         Button question = (Button) findViewById(R.id.home_question1);
         Button question2 = (Button) findViewById(R.id.home_question2);
         Button question3 = (Button) findViewById(R.id.home_question3);

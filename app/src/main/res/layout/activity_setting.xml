@@ -14,6 +14,20 @@
         android:layout_height="65dp"
         app:srcCompat="@drawable/home_island"
         android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/settingtext"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="SETTINGS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -35,7 +49,6 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="5dp"
         android:orientation="horizontal">
-
 
 
         <ImageButton
@@ -76,29 +89,92 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_music_note_24"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/soundtext"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="30dp"
+        android:text="Sound"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
     <Switch
         android:id="@+id/switch_sound1"
-        android:layout_width="176dp"
-        android:layout_height="29dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="333dp"
+        android:layout_marginTop="200dp"
         android:text="Sound Background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="25dp"
+        android:textColor="@color/white"
         />
 
     <Switch
         android:id="@+id/switch_sound2"
-        android:layout_width="176dp"
-        android:layout_height="29dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="250dp"
         android:text="Sound Effect"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="217dp"
+        android:textSize="25dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/othertext"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="30dp"
+        android:text="Timer"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/timersetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/timer"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="325dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="30dp"/>
+    <Switch
+        android:id="@+id/switch_timer"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:text="Countdown Timer"
+        android:textSize="25dp"
+        android:textColor="@color/white"
         />
+
 
 </RelativeLayout>

@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -16,8 +14,8 @@ import services.BackgroundMusicService;
 
 public class SettingActivity extends AppCompatActivity {
     public static Boolean isPlaying = false;
-
     public static Boolean isPlaySE =false;
+    public static Boolean isStart =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +25,14 @@ public class SettingActivity extends AppCompatActivity {
         ImageButton add = (ImageButton) findViewById(R.id.add);
 
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
-
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
+        Switch timer_switch = (Switch) findViewById(R.id.switch_timer);
         final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
         sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
         final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
         se_switch.setChecked(sharedPreferencesSe.getBoolean("isEnabled", false));
+        final SharedPreferences sharedPreferencesT = getPreferences(MODE_PRIVATE);
+        timer_switch.setChecked(sharedPreferencesT.getBoolean("isEnabled", false));
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +86,21 @@ public class SettingActivity extends AppCompatActivity {
                 } else {
                     if (isPlaySE) {
                         isPlaySE = false;
+                    }
+                }
+            }
+        });
+        timer_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                if (isChecked) {
+                    if (!isStart) {
+                        isStart= true;
+                    }
+                } else {
+                    if (isPlaySE) {
+                        isStart = false;
                     }
                 }
             }
