@@ -17,8 +17,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddQuestionActivity extends AppCompatActivity {
 
@@ -96,7 +102,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 String option2 = option2Input.getText().toString();
                 String option3 = option3Input.getText().toString();
 
-                File file = new File(getExternalFilesDir(null), fileName+".txt");
+                File file = new File(getExternalFilesDir(null), fileName+".json");
                 JSONObject js = new JSONObject();
 
                 try {
@@ -106,6 +112,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                     js.put("option2",option2);
                     js.put("option3",option3);
                     writeToFile(js, file);
+
                     Intent toHomeActivity = new Intent(AddQuestionActivity.this, HomeActivity.class);
                     Context context = getApplicationContext();
                     CharSequence text = "SUCCESSFULLY INSERT!";
@@ -156,17 +163,49 @@ public class AddQuestionActivity extends AppCompatActivity {
     }
 
     public void writeToFile(JSONObject js, File file) {
+
+        ArrayList<String> processList;
+        processList = readFromFile(file);
+
+        if (!processList.isEmpty()) {
+            int lastIndex = processList.size() - 1;
+            String lastElement = processList.get(lastIndex);
+            if (lastElement.endsWith("]")) {
+                processList.set(lastIndex, lastElement.substring(0, lastElement.length() - 1));
+            }
+        }
+
+
+        for (int i = 0; i < processList.size(); i++) {
+            String element = processList.get(i);
+            if (element.contains("[")) {
+                element = element.replace("[", "");
+                processList.set(i, element);
+            }
+        }
+
+        processList.add(js.toString());
         try {
-            FileWriter fileWriter = new FileWriter(file,true);
-            fileWriter.write(js.toString() + "\n");
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(processList + "\n");
             fileWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void processJsonFile(){
-
+    public ArrayList readFromFile(File file){
+        ArrayList<String> stringList = new ArrayList<>();
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((line = reader.readLine()) != null) {
+                stringList.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringList;
     }
+
 
 }
