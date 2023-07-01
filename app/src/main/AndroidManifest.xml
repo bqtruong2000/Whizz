@@ -15,19 +15,10 @@
         android:theme="@style/Theme.Whizz"
         tools:targetApi="31">
         <activity
-            android:name=".FourthIntroductionActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".ThirdIntroduction"
-            android:exported="false" />
-        <activity
-            android:name=".SecondIntroductionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FristIntroductionActivity"
+            android:name=".IntroductionActivity"
             android:exported="false" />
         <activity
             android:name=".SettingActivity"

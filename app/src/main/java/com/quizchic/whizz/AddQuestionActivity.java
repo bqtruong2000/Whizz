@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +22,7 @@ import java.io.FileWriter;
 
 public class AddQuestionActivity extends AppCompatActivity {
 
+    public String fileName = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,52 @@ public class AddQuestionActivity extends AppCompatActivity {
         EditText option3Input = (EditText) findViewById(R.id.editOption3);
         Button submitButton = (Button) findViewById(R.id.startButton);
 
+        String[] options = {"Choose a subject","Object-Oriented Programming", "Database Fundamental", "Computer Systems", "Operation Fundamental"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(position == 0){
+                    return;
+                }
+
+                switch (position){
+                    case 1: {
+                        fileName = "oop";
+                        break;
+                    }
+                    case 2:{
+                        fileName = "databaseFundamental";
+                        break;
+                    }
+                    case 3:{
+                        fileName = "computerSystems";
+                        break;
+                    }
+                    case 4: {
+                        fileName = "operationFundamental";
+                        break;
+                    }
+                    default:
+                        fileName = null;
+                        break;
+                }
+
+                Toast.makeText(AddQuestionActivity.this, "Selected value: " + fileName, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +96,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 String option2 = option2Input.getText().toString();
                 String option3 = option3Input.getText().toString();
 
-                File file = new File(getExternalFilesDir(null), "question.txt");
+                File file = new File(getExternalFilesDir(null), fileName+".txt");
                 JSONObject js = new JSONObject();
 
                 try {
@@ -116,5 +165,8 @@ public class AddQuestionActivity extends AppCompatActivity {
         }
     }
 
+    public void processJsonFile(){
+
+    }
 
 }
