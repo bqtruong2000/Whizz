@@ -81,8 +81,6 @@ public class AddQuestionActivity extends AppCompatActivity {
                         fileName = null;
                         break;
                 }
-
-                Toast.makeText(AddQuestionActivity.this, "Selected value: " + fileName, Toast.LENGTH_SHORT).show();
             }
 
             @Override
