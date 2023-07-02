@@ -54,7 +54,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             Collections.shuffle(questions);
         }
         occurActivityTimes++;
-        totalQuestions = 5;
+        if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == false ){
+            totalQuestions = Integer.parseInt(IntroductionActivity.numberOfQuestion);
+        }
+        else if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == true ) {
+            totalQuestions = 5;
+        }
+        //totalQuestions = 5;
         init();
         loadQuestions(questionIndex);
     }
