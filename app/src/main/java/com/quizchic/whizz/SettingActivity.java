@@ -30,9 +30,9 @@ public class SettingActivity extends AppCompatActivity {
         final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
         sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
         final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
-        se_switch.setChecked(sharedPreferencesSe.getBoolean("isEnabled", false));
+        se_switch.setChecked(sharedPreferencesSe.getBoolean("isEnabled1", false));
         final SharedPreferences sharedPreferencesT = getPreferences(MODE_PRIVATE);
-        timer_switch.setChecked(sharedPreferencesT.getBoolean("isEnabled", false));
+        timer_switch.setChecked(sharedPreferencesT.getBoolean("isEnabled2", false));
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +78,7 @@ public class SettingActivity extends AppCompatActivity {
         se_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferencesSe.edit().putBoolean("isEnabled1", isChecked).apply();
                 if (isChecked) {
                     if (!isPlaySE) {
                         isPlaySE= true;
@@ -93,7 +93,7 @@ public class SettingActivity extends AppCompatActivity {
         timer_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferencesSe.edit().putBoolean("isEnabled2", isChecked).apply();
                 if (isChecked) {
                     if (!isStart) {
                         isStart= true;
