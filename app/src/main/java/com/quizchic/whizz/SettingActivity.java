@@ -16,6 +16,7 @@ public class SettingActivity extends AppCompatActivity {
     public static Boolean isPlaying = false;
     public static Boolean isPlaySE =false;
     public static Boolean isStart =false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +28,10 @@ public class SettingActivity extends AppCompatActivity {
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         Switch timer_switch = (Switch) findViewById(R.id.switch_timer);
-        final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
-        sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
-        final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
-        se_switch.setChecked(sharedPreferencesSe.getBoolean("isEnabled", false));
-        final SharedPreferences sharedPreferencesT = getPreferences(MODE_PRIVATE);
-        timer_switch.setChecked(sharedPreferencesT.getBoolean("isEnabled", false));
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabledSbg", false));
+        se_switch.setChecked(sharedPreferences.getBoolean("isEnabledSe", false));
+        timer_switch.setChecked(sharedPreferences.getBoolean("isEnabledT", false));
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +60,7 @@ public class SettingActivity extends AppCompatActivity {
         sbg_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSbg.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferences.edit().putBoolean("isEnabledSbg", isChecked).apply();
                 if (isChecked) {
                    if (!isPlaying) {
                        startService(new Intent(SettingActivity.this, BackgroundMusicService.class));
@@ -78,7 +77,7 @@ public class SettingActivity extends AppCompatActivity {
         se_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferences.edit().putBoolean("isEnabledSe", isChecked).apply();
                 if (isChecked) {
                     if (!isPlaySE) {
                         isPlaySE= true;
@@ -93,7 +92,7 @@ public class SettingActivity extends AppCompatActivity {
         timer_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSe.edit().putBoolean("isEnabled", isChecked).apply();
+                sharedPreferences.edit().putBoolean("isEnabledT", isChecked).apply();
                 if (isChecked) {
                     if (!isStart) {
                         isStart= true;
