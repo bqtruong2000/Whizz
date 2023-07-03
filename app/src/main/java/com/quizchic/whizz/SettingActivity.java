@@ -27,6 +27,7 @@ public class SettingActivity extends AppCompatActivity {
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         Switch timer_switch = (Switch) findViewById(R.id.switch_timer);
+
         final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
         sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
         final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
