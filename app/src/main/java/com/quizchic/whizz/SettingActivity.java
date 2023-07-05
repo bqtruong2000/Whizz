@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -27,6 +29,35 @@ public class SettingActivity extends AppCompatActivity {
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         Switch timer_switch = (Switch) findViewById(R.id.switch_timer);
+
+        ColorStateList colorThumb = new ColorStateList(
+                new int[][] {
+                        new int[] {android.R.attr.state_checked}, //trạng thái checked
+                        new int[] {} //trạng thái bình thường
+                },
+                new int[] {
+                        Color.BLACK,
+                        Color.WHITE
+                }
+        );
+        ColorStateList colorTrack = new ColorStateList(
+                new int[][] {
+                        new int[] {android.R.attr.state_checked}, //trạng thái checked
+                        new int[] {} //trạng thái bình thường
+                },
+                new int[] {
+                        Color.BLACK,
+                        Color.WHITE
+                }
+        );
+
+        sbg_switch.setThumbTintList(colorThumb);
+        sbg_switch.setTrackTintList(colorTrack);
+        se_switch.setThumbTintList(colorThumb);
+        se_switch.setTrackTintList(colorTrack);
+        timer_switch.setThumbTintList(colorThumb);
+        timer_switch.setTrackTintList(colorTrack);
+
         final SharedPreferences sharedPreferencesSbg = getPreferences(MODE_PRIVATE);
         sbg_switch.setChecked(sharedPreferencesSbg.getBoolean("isEnabled", false));
         final SharedPreferences sharedPreferencesSe = getPreferences(MODE_PRIVATE);
@@ -93,7 +124,7 @@ public class SettingActivity extends AppCompatActivity {
         timer_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesSe.edit().putBoolean("isEnabled2", isChecked).apply();
+                sharedPreferencesT.edit().putBoolean("isEnabled2", isChecked).apply();
                 if (isChecked) {
                     if (!isStart) {
                         isStart= true;
