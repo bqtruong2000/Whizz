@@ -18,7 +18,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
 
 
     ArrayList<Question> questions = QuestionActivity.chosenQuestions;
-    int totalQuestions = 5;
+    int totalQuestions;
 
     TextView questionTextView,questionScore;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, next_Btn, previous_Btn;
@@ -37,7 +37,12 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         selectedAns = intent.getStringArrayListExtra("selectedAns");
         yourScore = intent.getStringExtra("Score");
-
+        if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == false ){
+            totalQuestions = Integer.parseInt(IntroductionActivity.numberOfQuestion);
+        }
+        else if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == true ) {
+            totalQuestions = 5;
+        }
         init();
         loadQuestions(questionIndex);
         loadCheck();
@@ -95,7 +100,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     public void warningReviewLimit(){
         new AlertDialog.Builder(this)
                 .setMessage("can't go anymore")
-                .setPositiveButton("Restar", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Restart", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent toQuestionActivity = new Intent(ReviewActivity.this,QuestionActivity.class);

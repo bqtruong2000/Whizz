@@ -28,10 +28,12 @@ public class SettingActivity extends AppCompatActivity {
         Switch sbg_switch = (Switch) findViewById(R.id.switch_sound1);
         Switch se_switch = (Switch) findViewById(R.id.switch_sound2);
         Switch timer_switch = (Switch) findViewById(R.id.switch_timer);
+
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         sbg_switch.setChecked(sharedPreferences.getBoolean("isEnabledSbg", false));
         se_switch.setChecked(sharedPreferences.getBoolean("isEnabledSe", false));
         timer_switch.setChecked(sharedPreferences.getBoolean("isEnabledT", false));
+
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
