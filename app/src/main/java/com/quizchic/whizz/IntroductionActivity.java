@@ -38,6 +38,10 @@ public class IntroductionActivity extends AppCompatActivity {
             courseName.setText("Operation fundamental");
             introduction.setText("Operation fundamental are the fundamental principles and concepts that form the basis of effective and efficient operations management within an organization. It encompasses the essential knowledge and techniques required to design, plan, execute, and control various operational processes.");
         }
+        if(QuestionActivity.chosenSubject.equals("MachineLearning.json")){
+            courseName.setText("MachineLearning");
+            introduction.setText("Machine learning enables computers to learn from data without explicit programming. It finds patterns, makes predictions, and automates processes, transforming industries with its wide-ranging applications.");
+        }
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override

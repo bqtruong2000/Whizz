@@ -15,6 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -49,7 +54,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_question);
         chosenQuestions.clear();
         if(occurActivityTimes%4 == 0) {
-            String json = getJson(chosenSubject);
+            String json;
+            if(chosenSubject.equals("MachineLearning.json")){
+                json = getJsonFromExternal(chosenSubject);
+            }
+            else {
+                json = getJson(chosenSubject);
+            }
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }
@@ -63,6 +74,28 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         //totalQuestions = 5;
         init();
         loadQuestions(questionIndex);
+    }
+
+    public String getJsonFromExternal(String fileName){
+        File file = new File(getExternalFilesDir(null), fileName);
+        String json = "";
+        ArrayList<String> stringList = new ArrayList<>();
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((line = reader.readLine()) != null) {
+                stringList.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String element : stringList) {
+            stringBuilder.append(element);
+            stringBuilder.append(" ");
+        }
+        json = stringBuilder.toString();
+        return json;
     }
 
     public String getJson(String fileName){
@@ -230,7 +263,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     public void countTimer(){
         if(SettingActivity.isStart) {
-            countDownTimer = new CountDownTimer(60000, 1000) {
+            countDownTimer = new CountDownTimer(15000, 1000) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {

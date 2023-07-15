@@ -35,7 +35,7 @@
     <Button
         android:id="@+id/home_question1"
         android:layout_width="339dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/home_userName"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
@@ -53,7 +53,7 @@
     <Button
         android:id="@+id/home_question2"
         android:layout_width="339dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/home_question1"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="30dp"
@@ -70,7 +70,7 @@
     <Button
         android:id="@+id/home_question3"
         android:layout_width="339dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/home_question2"
         android:layout_marginLeft="40dp"
         android:src="@drawable/whiterectangle"
@@ -87,13 +87,30 @@
     <Button
         android:id="@+id/home_question4"
         android:layout_width="339dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/home_question3"
         android:layout_marginLeft="40dp"
         android:src="@drawable/whiterectangle"
         android:gravity="center"
         android:textAlignment="center"
         android:text="Operation Fudamental"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:backgroundTint="#C9FEFB"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/home_question5"
+        android:layout_width="339dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/home_question4"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/whiterectangle"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Machine Learning"
         android:textSize="16dp"
         android:textColor="@color/black"
         android:textStyle="bold"
