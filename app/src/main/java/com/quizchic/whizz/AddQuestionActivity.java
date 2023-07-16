@@ -37,7 +37,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         ImageButton setting = (ImageButton) findViewById(R.id.settings);
         ImageButton user = (ImageButton) findViewById(R.id.user);
         Button back = (Button) findViewById(R.id.previous);
-        Spinner courseName = (Spinner) findViewById(R.id.spinner);
+
         EditText questionInput = (EditText) findViewById(R.id.editQuestion);
         EditText answerInput = (EditText) findViewById(R.id.editAnswer);
         EditText option1Input = (EditText) findViewById(R.id.editOption1);

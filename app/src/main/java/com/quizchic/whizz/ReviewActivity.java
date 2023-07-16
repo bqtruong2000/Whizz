@@ -18,7 +18,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
 
 
     ArrayList<Question> questions = QuestionActivity.chosenQuestions;
-    int totalQuestions;
+    int numberOfQuestions;
 
     TextView questionTextView,questionScore;
     Button ansA_Btn, ansB_Btn, ansC_Btn, ansD_Btn, next_Btn, previous_Btn;
@@ -37,12 +37,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         selectedAns = intent.getStringArrayListExtra("selectedAns");
         yourScore = intent.getStringExtra("Score");
-        if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == false ){
-            totalQuestions = Integer.parseInt(IntroductionActivity.numberOfQuestion);
-        }
-        else if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == true ) {
-            totalQuestions = 5;
-        }
+        numberOfQuestions = QuestionActivity.Question_numberOfQuestions;
         init();
         loadQuestions(questionIndex);
         loadCheck();
@@ -148,7 +143,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             ansB_Btn.setBackgroundColor(Color.GREEN);
         if (ansC_Btn.getText() != null && ansC_Btn.getText().equals(rightAnswer))
             ansC_Btn.setBackgroundColor(Color.GREEN);
-        if (ansD_Btn.getText() != null && ansC_Btn.getText().equals(rightAnswer))
+        if (ansD_Btn.getText() != null && ansD_Btn.getText().equals(rightAnswer))
             ansD_Btn.setBackgroundColor(Color.GREEN);
     }
 
@@ -160,7 +155,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         ansC_Btn.setBackgroundColor(733757);
         ansD_Btn.setBackgroundColor(733757);
         if(clickedButton.getId() == R.id.question_next){
-            if(questionIndex < totalQuestions-1){
+            if(questionIndex < numberOfQuestions-1){
                 questionIndex++;
                 loadQuestions(questionIndex);
                 loadCheck();

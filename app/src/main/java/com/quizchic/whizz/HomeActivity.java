@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -53,53 +55,73 @@ public class HomeActivity extends AppCompatActivity {
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
-                QuestionActivity.chosenSubject = "question.json";
-                QuestionActivity.occurActivityTimes = 0;
-                QuestionActivity.questions.clear();
-                startActivity(toIntroductionActivity);
+                if((SettingActivity.redFlagTimer == false && SettingActivity.isStart == true) || SettingActivity.Setting_numberOfQuestion <= 0){
+                    checkTimer();
+                }
+                else{
+                    Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                    QuestionActivity.chosenSubject = "question.json";
+                    QuestionActivity.questions.clear();
+                    startActivity(toIntroductionActivity);
+                }
             }
         });
         question2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
-                QuestionActivity.chosenSubject = "question_second.json";
-                QuestionActivity.occurActivityTimes = 0;
-                QuestionActivity.questions.clear();
-                startActivity(toIntroductionActivity);
+                if((SettingActivity.redFlagTimer == false && SettingActivity.isStart == true) || SettingActivity.Setting_numberOfQuestion <= 0){
+                    checkTimer();
+                }
+                else {
+                    Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                    QuestionActivity.chosenSubject = "question_second.json";
+                    QuestionActivity.questions.clear();
+                    startActivity(toIntroductionActivity);
+                }
             }
         });
         question3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
-                QuestionActivity.chosenSubject = "question_third.json";
-                QuestionActivity.occurActivityTimes = 0;
-                QuestionActivity.questions.clear();
-                startActivity(toIntroductionActivity);
+                if((SettingActivity.redFlagTimer == false && SettingActivity.isStart == true) || SettingActivity.Setting_numberOfQuestion <= 0){
+                    checkTimer();
+                }
+                else {
+                    Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                    QuestionActivity.chosenSubject = "question_third.json";
+                    QuestionActivity.questions.clear();
+                    startActivity(toIntroductionActivity);
+                }
             }
         });
 
         question4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
-                QuestionActivity.chosenSubject="question_fourth.json";
-                QuestionActivity.occurActivityTimes = 0;
-                QuestionActivity.questions.clear();
-                startActivity(toIntroductionActivity);
+                if((SettingActivity.redFlagTimer == false && SettingActivity.isStart == true) || SettingActivity.Setting_numberOfQuestion <= 0){
+                    checkTimer();
+                }
+                else {
+                    Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                    QuestionActivity.chosenSubject = "question_fourth.json";
+                    QuestionActivity.questions.clear();
+                    startActivity(toIntroductionActivity);
+                }
             }
         });
 
         question5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
-                QuestionActivity.chosenSubject="MachineLearning.json";
-                QuestionActivity.occurActivityTimes = 0;
-                QuestionActivity.questions.clear();
-                startActivity(toIntroductionActivity);
+                if((SettingActivity.redFlagTimer == false && SettingActivity.isStart == true) || SettingActivity.Setting_numberOfQuestion <= 0){
+                    checkTimer();
+                }
+                else {
+                    Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                    QuestionActivity.chosenSubject = "MachineLearning.json";
+                    QuestionActivity.questions.clear();
+                    startActivity(toIntroductionActivity);
+                }
             }
         });
     }
@@ -112,5 +134,25 @@ public class HomeActivity extends AppCompatActivity {
         else if(name.equalsIgnoreCase("") == true ) {
             nameOfUser.append(nullName);
         }
+    }
+
+    public void checkTimer(){
+        if(SettingActivity.redFlagTimer == false && SettingActivity.isStart == true && SettingActivity.Setting_numberOfQuestion <= 0 ){
+            Toast.makeText(getApplicationContext(), "Warning! The number of your questions have to be greater than 0. Please input time for timer", Toast.LENGTH_SHORT).show();
+        }
+        else if(SettingActivity.Setting_numberOfQuestion <= 0 ){
+            Toast.makeText(getApplicationContext(), "Warning! The number of your questions have to be greater than 0", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Please input time for timer", Toast.LENGTH_SHORT).show();
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent toSettingsActivity = new Intent(HomeActivity.this, SettingActivity.class);
+                startActivity(toSettingsActivity);
+                finish();
+            }
+        }, 3000);
     }
 }
