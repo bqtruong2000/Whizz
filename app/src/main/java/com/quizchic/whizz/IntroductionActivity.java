@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class IntroductionActivity extends AppCompatActivity {
-    public static String numberOfQuestion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +19,7 @@ public class IntroductionActivity extends AppCompatActivity {
         TextView introduction = (TextView) findViewById(R.id.Introduction_introduction);
         Button question = (Button) findViewById(R.id.Introduction_startButton);
         Button back = (Button) findViewById(R.id.Introduction_back);
-        EditText numOfQuestion = (EditText) findViewById(R.id.numOfQuestion);
+
 
         if(QuestionActivity.chosenSubject.equals("question.json")){
             courseName.setText("Object-oriented programming");
@@ -38,13 +37,15 @@ public class IntroductionActivity extends AppCompatActivity {
             courseName.setText("Operation fundamental");
             introduction.setText("Operation fundamental are the fundamental principles and concepts that form the basis of effective and efficient operations management within an organization. It encompasses the essential knowledge and techniques required to design, plan, execute, and control various operational processes.");
         }
+        if(QuestionActivity.chosenSubject.equals("MachineLearning.json")){
+            courseName.setText("MachineLearning");
+            introduction.setText("Machine learning enables computers to learn from data without explicit programming. It finds patterns, makes predictions, and automates processes, transforming industries with its wide-ranging applications.");
+        }
 
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toQuestionActivity = new Intent(IntroductionActivity.this, QuestionActivity.class);
-                String s = numOfQuestion.getText().toString();
-                numberOfQuestion = s;
                 startActivity(toQuestionActivity);
             }
         });

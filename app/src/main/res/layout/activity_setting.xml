@@ -176,5 +176,120 @@
         android:textColor="@color/white"
         />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="275dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/hoursInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:maxWidth="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/minutesInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:maxWidth="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/secondsInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:maxWidth="40dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="180dp"
+        app:srcCompat="@drawable/question_setting" />
+
+    <TextView
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="392dp"
+        android:layout_marginEnd="183dp"
+        android:layout_marginBottom="30dp"
+        android:text="Question"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="505dp"
+        android:text="Number of questions: "
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        />
+
+    <EditText
+        android:id="@+id/numOfQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="180dp"
+        android:ems="2"
+        android:text="5"
+        android:inputType="number"
+        android:maxWidth="40dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 
 </RelativeLayout>

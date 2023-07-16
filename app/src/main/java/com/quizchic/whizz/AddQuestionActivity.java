@@ -45,7 +45,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         EditText option3Input = (EditText) findViewById(R.id.editOption3);
         Button submitButton = (Button) findViewById(R.id.startButton);
 
-        String[] options = {"Choose a subject","Object-Oriented Programming", "Database Fundamental", "Computer Systems", "Operation Fundamental"};
+        String[] options = {"Choose a subject","Fundamentals of Computer Networking", "Data Structures and Algorithms", "Database Management System", "Machine Learning"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -62,27 +62,25 @@ public class AddQuestionActivity extends AppCompatActivity {
 
                 switch (position){
                     case 1: {
-                        fileName = "oop";
+                        fileName = "FundamentalsOfComputerNetworking";
                         break;
                     }
                     case 2:{
-                        fileName = "databaseFundamental";
+                        fileName = "DataStructuresAndAlgorithms";
                         break;
                     }
                     case 3:{
-                        fileName = "computerSystems";
+                        fileName = "DatabaseManagementSystem";
                         break;
                     }
                     case 4: {
-                        fileName = "operationFundamental";
+                        fileName = "MachineLearning";
                         break;
                     }
                     default:
                         fileName = null;
                         break;
                 }
-
-                Toast.makeText(AddQuestionActivity.this, "Selected value: " + fileName, Toast.LENGTH_SHORT).show();
             }
 
             @Override

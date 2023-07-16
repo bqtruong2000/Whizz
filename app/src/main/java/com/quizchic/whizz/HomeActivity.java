@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         Button question2 = (Button) findViewById(R.id.home_question2);
         Button question3 = (Button) findViewById(R.id.home_question3);
         Button question4 = (Button) findViewById(R.id.home_question4);
+        Button question5 = (Button) findViewById(R.id.home_question5);
 
         TextView nameOfUser = (TextView) findViewById(R.id.home_userName);
         displayUserName(MainActivity.userName,nameOfUser);
@@ -54,7 +55,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
                 QuestionActivity.chosenSubject = "question.json";
-                QuestionActivity.occurActivityTimes = 0;
                 QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
@@ -64,7 +64,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
                 QuestionActivity.chosenSubject = "question_second.json";
-                QuestionActivity.occurActivityTimes = 0;
                 QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
@@ -74,7 +73,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
                 QuestionActivity.chosenSubject = "question_third.json";
-                QuestionActivity.occurActivityTimes = 0;
                 QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }
@@ -85,7 +83,16 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
                 QuestionActivity.chosenSubject="question_fourth.json";
-                QuestionActivity.occurActivityTimes = 0;
+                QuestionActivity.questions.clear();
+                startActivity(toIntroductionActivity);
+            }
+        });
+
+        question5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toIntroductionActivity = new Intent(HomeActivity.this, IntroductionActivity.class);
+                QuestionActivity.chosenSubject="MachineLearning.json";
                 QuestionActivity.questions.clear();
                 startActivity(toIntroductionActivity);
             }

@@ -15,6 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -25,7 +30,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     int questionIndex = 0;
     int score = 0,scoreOfAnAnswer = 50;
     int correctAnswers = 0, incorrectAnswers = 0, outOfTimeAnswers = 0 ;
-    int totalQuestions;
+    public static int Question_numberOfQuestions;
 
     public static String[][] answersShuffled = new String[20][4];
     TextView questionTextView,questionScore, questionTimer;
@@ -38,31 +43,54 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     public static ArrayList chosenQuestions = new ArrayList<Question>();
     ArrayList<String> selectedAns = new ArrayList<String>();
 
-
-    public static int occurActivityTimes = 0;
-
     private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println(SettingActivity.milliSecond);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        Question_numberOfQuestions = SettingActivity.Setting_numberOfQuestion;
+
         chosenQuestions.clear();
-        if(occurActivityTimes%4 == 0) {
-            String json = getJson(chosenSubject);
+        if(questions.size() == 0) {
+            String json;
+            if(chosenSubject.equals("MachineLearning.json")){
+                json = getJsonFromExternal(chosenSubject);
+            }
+            else {
+                json = getJson(chosenSubject);
+            }
             convertJsonToQuestions(json);
             Collections.shuffle(questions);
         }
-        occurActivityTimes++;
-        if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == false ){
-            totalQuestions = Integer.parseInt(IntroductionActivity.numberOfQuestion);
-        }
-        else if(IntroductionActivity.numberOfQuestion.equalsIgnoreCase("") == true ) {
-            totalQuestions = 5;
-        }
-        //totalQuestions = 5;
+        if(questions.size() < Question_numberOfQuestions)
+            Question_numberOfQuestions = questions.size();
         init();
         loadQuestions(questionIndex);
+    }
+
+    public String getJsonFromExternal(String fileName){
+        File file = new File(getExternalFilesDir(null), fileName);
+        String json = "";
+        ArrayList<String> stringList = new ArrayList<>();
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((line = reader.readLine()) != null) {
+                stringList.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String element : stringList) {
+            stringBuilder.append(element);
+            stringBuilder.append(" ");
+        }
+        json = stringBuilder.toString();
+        return json;
     }
 
     public String getJson(String fileName){
@@ -146,7 +174,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         countTimer();
 
-        questionScore.setText("     Score: "+score + " (" + (questionIndex+1) + "/" + totalQuestions +")");
+        questionScore.setText("     Score: "+score + " (" + (questionIndex+1) + "/" + Question_numberOfQuestions +")");
         Question question = (Question) questions.get(0);
         chosenQuestions.add(question);
         questions.remove(0);
@@ -201,7 +229,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             }
             selectedAnswer = null;
             questionIndex++;
-            if (questionIndex >= totalQuestions){
+            if (questionIndex >= Question_numberOfQuestions || questions.size() == 0){
                 if(SettingActivity.isStart) {
                     countDownTimer.cancel();
                 }
@@ -210,7 +238,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 toFinishQuizActivity.putExtra("Score",questionScore.getText().toString().trim());
                 toFinishQuizActivity.putExtra("incorrectAns",incorrectAnswers);
                 toFinishQuizActivity.putExtra("correctAns",correctAnswers);
-                toFinishQuizActivity.putExtra("totalQues",totalQuestions);
+                toFinishQuizActivity.putExtra("totalQues",Question_numberOfQuestions);
                 toFinishQuizActivity.putExtra("outOfTimeAns",outOfTimeAnswers);
                 startActivity(toFinishQuizActivity);
             } else {
@@ -230,7 +258,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     public void countTimer(){
         if(SettingActivity.isStart) {
-            countDownTimer = new CountDownTimer(60000, 1000) {
+            countDownTimer = new CountDownTimer(SettingActivity.milliSecond, 1000) {
 
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -253,13 +281,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     }
                     selectedAnswer = null;
                     questionIndex++;
-                    if (questionIndex >= totalQuestions) {
+                    if (questionIndex >= Question_numberOfQuestions || questions.size() == 0) {
                         Intent toFinishQuizActivity = new Intent(QuestionActivity.this, FinishQuizActivity.class);
                         toFinishQuizActivity.putStringArrayListExtra("selectedAns", selectedAns);
                         toFinishQuizActivity.putExtra("Score", questionScore.getText().toString().trim());
                         toFinishQuizActivity.putExtra("incorrectAns", incorrectAnswers);
                         toFinishQuizActivity.putExtra("correctAns", correctAnswers);
-                        toFinishQuizActivity.putExtra("totalQues", totalQuestions);
+                        toFinishQuizActivity.putExtra("totalQues", Question_numberOfQuestions);
                         toFinishQuizActivity.putExtra("outOfTimeAns", outOfTimeAnswers);
                         startActivity(toFinishQuizActivity);
                     } else {
@@ -273,7 +301,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             };
             countDownTimer.start();
         } else {
-            questionTimer.setText(String.format("Time: " + "∞"));
+            questionTimer.setVisibility(View.INVISIBLE);
         }
     }
 }
